@@ -4,3 +4,5 @@ security
 npm-debug.log
 .env
 .DS_Store
+.glb
+.gltf
