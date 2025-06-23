@@ -12,7 +12,7 @@ const PORT = 3000;
 //  cert: fs.readFileSync('security/server.cert')
 //};
 const options = {
-  pfx: fs.readFileSync('secutiry/_.inje.ac.kr.pfx'),
+  pfx: fs.readFileSync('security/_.inje.ac.kr.pfx'),
   passphrase: 'LHY20250204' // if your .pfx file is password-protected
 };
 
