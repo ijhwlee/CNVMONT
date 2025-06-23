@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Server03 3D Object using WebGL</title>
-    <style>
-        body { margin: 0; overflow: hidden; }
-        canvas { display: block; }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Three.js + Express</title>
 </head>
 <body>
-    <h1>Content</h1>
-    <script type="module" src="./main.js"></script>
+  <div>
+    <canvas class="scene"></canvas>
+    <script type="module" src="main.js"></script>
+  </div>
+  <div>
+    <canvas class="scene_glb"></canvas>
+    <script type="module" src="./main_glb.js"></script>
+  </div>
 </body>
 </html>

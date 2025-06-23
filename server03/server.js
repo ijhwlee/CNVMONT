@@ -1,13 +1,19 @@
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
+const fs = require('fs');
+const https = require('https');
+const express = require('express');
+const path = require('path');
 const app = express();
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const PORT = 3000;
+
+// SSL options
+const options = {
+  key: fs.readFileSync('security/server.key'),
+  cert: fs.readFileSync('security/server.cert')
+};
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+https.createServer(options, app).listen(PORT, () => {
+  console.log(`Server running at https://localhost:${PORT}`);
 });
