@@ -22,6 +22,7 @@ const models = ['./model/dodge_viper_gts.glb',
           './model/free_1975_porsche_911_930_turbo.glb'];
 const model_count = models.length;
 var model;
+var size_set = false;
 const loader = new GLTFLoader();
 loader.load(models[3], gltf => {
   model = gltf.scene;
@@ -29,6 +30,13 @@ loader.load(models[3], gltf => {
 }, undefined, error => {
   console.error('Error loading model:', error);
 });
+if (model) {
+  const size = new THREE.Vector3();
+  const box = new THREE.Box3().setFromObject(model);
+  box.getSize(size);
+  size_set = true;
+  console.log(`Width: ${size.x}, Height: ${size.y}, Depth: ${size.z}`);
+}
 
 //Camera
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight);
@@ -55,6 +63,19 @@ var count = 0;
 function animate() {
   requestAnimationFrame(animate);
   if (model) {
+    if (!size_set) {
+      const size = new THREE.Vector3();
+      const box = new THREE.Box3().setFromObject(model);
+      box.getSize(size);
+      size_set = true;
+      console.log(`Width: ${size.x}, Height: ${size.y}, Depth: ${size.z}`);
+      var scale = (size.x > size.y? size.x:size.y);
+      scale = (scale>size.z? scale:size.z);
+      const viewAngle = Math.atan2(camera.position.length(), scale/2)*(180/Math.PI)*1.01;
+      camera.fov = viewAngle;
+      camera.updateProjectionMatrix();
+      console.log(`Distance: ${camera.position.length()}, viewAngle: ${viewAngle}`);
+    }
     model.rotation.y += 0.01;
   }
   else {
