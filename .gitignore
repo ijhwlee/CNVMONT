@@ -2,6 +2,7 @@ node_modules
 build
 security
 public/lib
+public/model
 npm-debug.log
 .env
 .DS_Store

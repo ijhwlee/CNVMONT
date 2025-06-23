@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Vite + Node</title></head>
+  <body>
+    <div id="app">Loading...</div>
+    <script type="module">
+      fetch('/api')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('app').textContent = data.message;
+        });
+    </script>
+  </body>
+</html>
