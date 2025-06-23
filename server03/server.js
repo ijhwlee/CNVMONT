@@ -7,9 +7,13 @@ const app = express();
 const PORT = 3000;
 
 // SSL options
+//const options = {
+//  key: fs.readFileSync('security/server.key'),
+//  cert: fs.readFileSync('security/server.cert')
+//};
 const options = {
-  key: fs.readFileSync('security/server.key'),
-  cert: fs.readFileSync('security/server.cert')
+  pfx: fs.readFileSync('secutiry/_.inje.ac.kr.pfx'),
+  passphrase: 'LHY20250204' // if your .pfx file is password-protected
 };
 
 app.use(express.static(path.join(__dirname, 'public')));
