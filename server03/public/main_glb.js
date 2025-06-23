@@ -18,11 +18,12 @@ scene.add(directionalLight);
 // load glb object
 const models = ['./model/dodge_viper_gts.glb',
           './model/mazdaVisionGranTorismo.glb',
-          './model/MitaFreeSampleV1.glb'];
+          './model/MitaFreeSampleV1.glb',
+          './model/free_1975_porsche_911_930_turbo.glb'];
 const model_count = models.length;
 var model;
 const loader = new GLTFLoader();
-loader.load('./model/MitaFreeSampleV1.glb', gltf => {
+loader.load(models[3], gltf => {
   model = gltf.scene;
   scene.add(model);
 }, undefined, error => {
@@ -30,11 +31,15 @@ loader.load('./model/MitaFreeSampleV1.glb', gltf => {
 });
 
 //Camera
-const camera = new THREE.PerspectiveCamera(100, window.innerWidth/window.innerHeight);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight);
 //camera.position.x = 0.5;
-camera.position.y = 60;
-camera.position.z = 40;
-camera.lookAt(0,50,0);
+//camera.position.y = 60;
+//camera.position.z = 40;
+//camera.lookAt(0,50,0);
+//camera.position.x = 0.5;
+camera.position.y = 3;
+camera.position.z = 5;
+camera.lookAt(0,1,0);
 scene.add(camera);
 
 // Renderer
