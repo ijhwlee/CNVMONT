@@ -11,22 +11,34 @@ function getLocalDir(object, x, y, z) {
   return localDir;
 }
 
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+const defaultViewAngle = 45;
 var mouseDown = false;
 var prevX = 0, prevY = 0;
 var curX = 0, curY = 0;
 var angleX = 0, angleY = 0;
-var viewAngle = 0;
+var viewAngle = defaultViewAngle;
+var prevDistance = -1;
 const minViewAngle = 1;
 const maxViewAngle = 179;
 const zoomSpeed = 50;  // smaller -> fast zoom
 const rotateSpeed = 100; // smaller -> fast rotation
 function mouseDownEventHandler(event) {
-  console.log(`Mouse down event handler! click at (${event.x}, ${event.y})`);
+  console.log(`Mouse down event handler! event is ${event})`);
+  if (typeof event.x === 'undefined') {
+    console.log('Event.x is not defined ');
+  }
+  else {
+    console.log(`Mouse down event handler! click at (${event.x}, ${event.y})`);
+    prevX = curX = event.x;
+    prevY = curY = event.y;
+  }
   mouseDown = true;
-  prevX = curX = event.x;
-  prevY = curY = event.y;
-  const direction = new THREE.Vector3();
-  cube.getWorldDirection(direction);
+  //const direction = new THREE.Vector3();
+  //cube.getWorldDirection(direction);
   //console.log(`Initial Cube direction = (${direction.x}, ${direction.y}, ${direction.z})`); // normalized vector
   //var localDir = getLocalDir(cube, 0, 1, 0);
   //console.log(`Initial Local direction of (0,1,0) = (${localDir.x}, ${localDir.y}, ${localDir.z})`); // normalized vector
@@ -72,25 +84,107 @@ function mouseMoveEventHandler(event) {
     //console.log(`Mouse move event handler! angleX = ${angleX}, angleY = ${angleY}`);
   }
 }
-function mouseWheelEventHandler(event) {
-  //console.log(`Mouse wheel event handler! move at (${event.x}, ${event.y}), mouseDown = ${mouseDown}`);
-  event.preventDefault();
+function changeFOV(deltaY) {
   //console.log(`Mouse wheel event handler! deltaY = ${event.deltaY}`);
-  viewAngle += event.deltaY/zoomSpeed;
+  const oldAngle = viewAngle;
+  viewAngle += deltaY/zoomSpeed;
   if (viewAngle < minViewAngle)
     viewAngle = minViewAngle;
   if (viewAngle > maxViewAngle)
     viewAngle = maxViewAngle;
-  console.log(`Mouse wheel event handler! viewAngle = ${viewAngle}`);
+  //console.log(`changeFOV viewAngle : ${oldAngle} ==> ${viewAngle}`);
   camera.fov = viewAngle;
   camera.updateProjectionMatrix();
 }
+function mouseWheelEventHandler(event) {
+  //console.log(`Mouse wheel event handler! move at (${event.x}, ${event.y}), mouseDown = ${mouseDown}`);
+  event.preventDefault();
+  //console.log(`Mouse wheel event handler! deltaY = ${event.deltaY}`);
+  changeFOV(event.deltaY);
+}
+
+// Mobile event handlers
+function touchDownEventHandler(event) {
+  //console.log(`Touch down event handler! event is ${event})`);
+  //console.log(`Mouse down event handler! click at (${event.touches[0].clientX}, ${event.touches[0].clientY})`);
+  prevX = curX = event.touches[0].clientX;
+  prevY = curY = event.touches[0].clientY;
+  mouseDown = true;
+  //const direction = new THREE.Vector3();
+  //cube.getWorldDirection(direction);
+  //console.log(`Initial Cube direction = (${direction.x}, ${direction.y}, ${direction.z})`); // normalized vector
+  //var localDir = getLocalDir(cube, 0, 1, 0);
+  //console.log(`Initial Local direction of (0,1,0) = (${localDir.x}, ${localDir.y}, ${localDir.z})`); // normalized vector
+  //localDir = getLocalDir(cube, 1, 0, 0);
+  //console.log(`Initial Local direction of (1,0,0) = (${localDir.x}, ${localDir.y}, ${localDir.z})`); // normalized vector
+  //localDir = getLocalDir(cube, 0, 0, 1);
+  //console.log(`Initial Local direction of (0,0,1) = (${localDir.x}, ${localDir.y}, ${localDir.z})`); // normalized vector
+}
+function touchUpEventHandler(event) {
+  console.log(`Mouse up event handler! click at (${event.touches[0].clientX}, ${event.touches[0].clientY})`);
+  mouseDown = false;
+  prevDistance = -1;
+}
+function touchMoveEventHandler(event) {
+  event.preventDefault();
+  //console.log(`Touch move event handler! touches = ${event.touches.length}`);
+  if(mouseDown && event.touches.length < 2) {
+    if (prevDistance >= 0) {
+      prevDistance = -1; // reset pinch zoom
+      return;
+    }
+    //const direction = new THREE.Vector3();
+    //cube.getWorldDirection(direction);
+    //console.log(`Cube direction = (${direction.x}, ${direction.y}, ${direction.z})`); // normalized vector
+    const localDirY = getLocalDir(cube, 0, 1, 0);
+    //console.log(`Local direction of (0,1,0) = (${localDirY.x}, ${localDirY.y}, ${localDirY.z})`); // normalized vector
+    const localDirX = getLocalDir(cube, 1, 0, 0);
+    //console.log(`Local direction of (1,0,0) = (${localDirX.x}, ${localDirX.y}, ${localDirX.z})`); // normalized vector
+    const localDirZ = getLocalDir(cube, 0, 0, 1);
+    //console.log(`Local direction of (0,0,1) = (${localDirZ.x}, ${localDirZ.y}, ${localDirZ.z})`); // normalized vector
+    //console.log(`Mouse move event handler! move at (${event.x}, ${event.y}), mouseDown = ${mouseDown}`);
+    angleX = event.touches[0].clientY - prevY;
+    angleY = event.touches[0].clientX - prevX;
+    prevX = event.touches[0].clientX;
+    prevY = event.touches[0].clientY;
+    // TODO find the correct angle rotation with respect to direction
+    const quaternionX = new THREE.Quaternion();
+    quaternionX.setFromAxisAngle(localDirX, angleX/rotateSpeed);
+    const eulerX = new THREE.Euler();
+    eulerX.setFromQuaternion(quaternionX, 'XYZ');
+    const quaternionY = new THREE.Quaternion();
+    quaternionY.setFromAxisAngle(localDirY, angleY/rotateSpeed);
+    const eulerY = new THREE.Euler();
+    eulerY.setFromQuaternion(quaternionY, 'XYZ');
+    cube.rotation.x += eulerX.x + eulerY.x;
+    cube.rotation.y += eulerX.y + eulerY.y;
+    cube.rotation.z += eulerX.z + eulerY.z;
+    //cube.rotation.x += angleX/rotateSpeed;
+    //cube.rotation.y += angleY/rotateSpeed;
+    console.log(`Touch move event handler! angleX = ${angleX}, angleY = ${angleY}`);
+  }
+  else if (mouseDown && event.touches.length >= 2) {
+    // Handle pinch zoom
+    const dx = event.touches[0].clientX - event.touches[1].clientX;
+    const dy = event.touches[0].clientY - event.touches[1].clientY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    let deltaY = prevDistance - distance;
+    //console.log(`Touch move event handler! prevDistance = ${prevDistance}`);
+    if (prevDistance < 0) {
+      deltaY = 0;
+    }
+    prevDistance = distance;
+    //console.log(`Touch move event handler! deltaY = ${deltaY}`);
+    changeFOV(deltaY);
+  }
+}
+
 
 // Canvas
 const canvas = document.querySelector('canvas.scene');
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(defaultViewAngle, window.innerWidth/window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
 
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -149,8 +243,10 @@ if (canvas) {
   canvas.onmouseup = mouseUpEventHandler;
   canvas.onmousemove = mouseMoveEventHandler;
   canvas.onwheel = mouseWheelEventHandler;
-  canvas.ontouchstart = mouseDownEventHandler;
-  canvas.ontouchstop = mouseUpEventHandler;
-  canvas.ontouchmove = mouseMoveEventHandler;
+  if (isMobile()) {
+    canvas.ontouchstart = touchDownEventHandler;
+    canvas.ontouchstop = touchUpEventHandler;
+    canvas.ontouchmove = touchMoveEventHandler;
+  }
 }
 animate();
