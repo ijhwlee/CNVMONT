@@ -149,5 +149,8 @@ if (canvas) {
   canvas.onmouseup = mouseUpEventHandler;
   canvas.onmousemove = mouseMoveEventHandler;
   canvas.onwheel = mouseWheelEventHandler;
+  canvas.ontouchstart = mouseDownEventHandler;
+  canvas.ontouchstop = mouseUpEventHandler;
+  canvas.ontouchmove = mouseMoveEventHandler;
 }
 animate();
