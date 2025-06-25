@@ -184,6 +184,7 @@ function touchMoveEventHandler(event) {
 const canvas = document.querySelector('canvas.scene');
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf0f0f0);
 const camera = new THREE.PerspectiveCamera(defaultViewAngle, window.innerWidth/window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
 

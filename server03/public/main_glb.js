@@ -6,6 +6,7 @@ const canvas = document.querySelector('canvas.scene_glb');
 
 // scene
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf0f0f0);
 
 // Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // soft white light
@@ -24,12 +25,21 @@ const model_count = models.length;
 var model;
 var size_set = false;
 const loader = new GLTFLoader();
-loader.load(models[3], gltf => {
-  model = gltf.scene;
-  scene.add(model);
-}, undefined, error => {
-  console.error('Error loading model:', error);
-});
+loader.load(models[3], 
+  gltf => {
+    model = gltf.scene;
+    scene.add(model);
+    document.getElementById('loader_glb').style.display = 'none';
+  }, 
+  (xhr) => {
+    const percent = (xhr.loaded / xhr.total) * 100;
+    document.getElementById('progress_glb').style.width = `${percent}%`;
+    document.getElementById('percent_glb').textContent = `Loading...${percent.toFixed(1)}%`;
+  }, 
+  error => {
+    console.error('Error loading model:', error);
+  }
+);
 if (model) {
   const size = new THREE.Vector3();
   const box = new THREE.Box3().setFromObject(model);
