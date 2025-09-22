@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CNVMONT Web3D</title>
+  <style>
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0px;
+    }
+
+    .grid-item {
+    background-color: #ffffff;
+    color: white;
+    padding: 0px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 0px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Test Web3D server: List of images</h1>
+    <div class="grid-container">
+        <div class="grid-item">
+            <iframe src="/3dmodels/cube" width="300" height = "200" title="Cube" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                style="overflow: hidden;" scrolling="no"
+                allowfullscreen></iframe><br>
+            <a href="/3dmodels/cube" target="_blank">Cube</a>
+        </div>
+        <div class="grid-item">
+            <iframe src="/3dmodels/capsule" width="300" height = "200" title="Capsule" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                style="overflow: hidden;" scrolling="no"
+                allowfullscreen></iframe>
+            <a href="/3dmodels/capsule" target="_blank">Cpasule</a>
+        </div>
+    <% for (let i = 0; i < modelList.length; i++) { %>
+        <div class="grid-item">
+            <iframe src=<%= modelList[i] %> width="300" height = "200" title=<%= modelList[i] %> frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                style="overflow: hidden;" scrolling="no"
+                allowfullscreen></iframe>
+            <a href=<%= modelList[i] %> target="_blank"><%= modelList[i] %></a>
+        </div>
+    <% } %>
+    </div>
+  </div>
+</body>
+</html>

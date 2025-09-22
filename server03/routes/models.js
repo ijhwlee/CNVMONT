@@ -3,13 +3,13 @@ const router = express.Router();
 const showModel = require("../controllers/modelControllers");
 
 router
-    .route("/3dmodels")
+    .route("/")
     .get((req, res) => {
         res.status(200).send("Hello 3d models");
     })
 
 router
-    .route("/3dmodels/:id")
+    .route("/:id")
     .get(showModel)
 
 module.exports = router;

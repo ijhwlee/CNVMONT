@@ -137,7 +137,7 @@
         //console.log(`Touch move event handler! touches = ${event.touches.length}`);
         if(mouseDown && event.touches.length < 2) {
             if (prevDistance >= 0) {
-            prevDistance = -1; // reset pinch zoom
+                prevDistance = -1; // reset pinch zoom
             return;
             }
             //const direction = new THREE.Vector3();
@@ -191,17 +191,28 @@
         requestAnimationFrame(animate);
         if (model) {
             if (!size_set) {
-            const size = new THREE.Vector3();
-            const box = new THREE.Box3().setFromObject(model);
-            box.getSize(size);
-            size_set = true;
-            console.log(`Width: ${size.x}, Height: ${size.y}, Depth: ${size.z}`);
-            var scale = (size.x > size.y? size.x:size.y);
-            scale = (scale>size.z? scale:size.z);
-            const viewAngle = Math.atan2(camera.position.length(), scale/2)*(180/Math.PI)*1.01;
-            camera.fov = viewAngle;
-            camera.updateProjectionMatrix();
-            console.log(`Distance: ${camera.position.length()}, viewAngle: ${viewAngle}`);
+                const size = new THREE.Vector3();
+                const box = new THREE.Box3().setFromObject(model);
+                const center = new THREE.Vector3();
+                box.getCenter(center);
+                console.log(`Model position: (${center.x}, ${center.y}, ${center.z}`);
+                box.getSize(size);
+                size_set = true;
+                console.log(`Width: ${size.x}, Height: ${size.y}, Depth: ${size.z}`);
+                var scale = (size.x > size.y? size.x:size.y);
+                scale = (scale>size.z? scale:size.z);
+                camera.position.y = center.y;
+                camera.position.z = scale*1.0;
+                //camera.position.z = 5;
+                if (Math.abs(camera.position.z) < 1) {
+                    camera.position.z = 1;
+                }
+                directionalLight.position.set(0, scale*1.5, scale*1.5);
+                const viewAngle = Math.atan2(scale*0.8, camera.position.length())*(180/Math.PI)*2.2;
+                camera.fov = viewAngle;
+                camera.updateProjectionMatrix();
+                console.log(`Camera Position: (${camera.position.x}, ${camera.position.y}, ${camera.position.z}), scale: ${scale}, viewAngle: ${viewAngle}`);
+                console.log(`Distance: ${camera.position.length()}, scale: ${scale}, viewAngle: ${viewAngle}`);
             }
             model.rotation.y += 0.01;
         }
@@ -237,6 +248,7 @@
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(5, 10, 7.5);
     scene.add(directionalLight);
+    var size_set = false;
     <% if (modelPath == 'cube') { %>
         // Add a cube
         const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -261,7 +273,6 @@
         scene.add(model);
     <% } else { %>
         var model;
-        var size_set = false;
         const loader = new GLTFLoader();
         loader.load('<%= modelPath %>', 
             gltf => {
@@ -278,16 +289,18 @@
                 console.error('Error loading model:', error);
             }
         );
-        if (model) {
-            const size = new THREE.Vector3();
-            const box = new THREE.Box3().setFromObject(model);
-            box.getSize(size);
-            size_set = true;
-            console.log(`Width: ${size.x}, Height: ${size.y}, Depth: ${size.z}`);
-        }
     <% } %>
 
-    camera.position.z = 5;
+    let size = new THREE.Vector3();
+    if (model) {
+        size = new THREE.Vector3();
+        const box = new THREE.Box3().setFromObject(model);
+        box.getSize(size);
+        size_set = true;
+        console.log(`Width: ${size.x}, Height: ${size.y}, Depth: ${size.z}`);
+    }
+    camera.position.z = size.z*5;
+    console.log(`Position: (${camera.position.x}, ${camera.position.y}, ${camera.position.z})`);
     var count = 0;
     console.log(`Canvas = ${canvas}`);
     if (canvas) {

@@ -15,7 +15,8 @@ const options = {
 };
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use("/", require("./routes/models"));
+app.use("/", require("./routes/home"));
+app.use("/3dmodels", require("./routes/models"));
 
 https.createServer(options, app).listen(PORT, () => {
   console.log(`Server running at https://localhost:${PORT}`);
