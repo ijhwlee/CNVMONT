@@ -29,6 +29,7 @@
     var angleX = 0, angleY = 0;
     var viewAngle = defaultViewAngle;
     var prevDistance = -1;
+    var initialDistance = 0;
     const minViewAngle = 1;
     const maxViewAngle = 179;
     const zoomSpeed = 50;  // smaller -> fast zoom
@@ -117,6 +118,9 @@
         prevX = curX = event.touches[0].clientX;
         prevY = curY = event.touches[0].clientY;
         mouseDown = true;
+        if (event.touches.length == 2) {
+            initialDistance = Math.hypot(event.touches[0].clientX - event.touches[1].clientX, event.touches[0].clientY - event.touches[1].clientY);
+        }
         //const direction = new THREE.Vector3();
         //cube.getWorldDirection(direction);
         //console.log(`Initial Cube direction = (${direction.x}, ${direction.y}, ${direction.z})`); // normalized vector
@@ -138,7 +142,7 @@
         if(mouseDown && event.touches.length < 2) {
             if (prevDistance >= 0) {
                 prevDistance = -1; // reset pinch zoom
-            return;
+                return;
             }
             //const direction = new THREE.Vector3();
             //cube.getWorldDirection(direction);
@@ -170,19 +174,16 @@
             //cube.rotation.y += angleY/rotateSpeed;
             console.log(`Touch move event handler! angleX = ${angleX}, angleY = ${angleY}`);
         }
-        else if (mouseDown && event.touches.length >= 2) {
+        else if (mouseDown && event.touches.length == 2) {
             // Handle pinch zoom
             const dx = event.touches[0].clientX - event.touches[1].clientX;
             const dy = event.touches[0].clientY - event.touches[1].clientY;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            let deltaY = prevDistance - distance;
-            //console.log(`Touch move event handler! prevDistance = ${prevDistance}`);
-            if (prevDistance < 0) {
-            deltaY = 0;
-            }
-            prevDistance = distance;
-            //console.log(`Touch move event handler! deltaY = ${deltaY}`);
-            changeFOV(deltaY);
+            let zoomFactor = distance/initialDistance;
+            zoomFactor = zoomFactor < 1? zoomFactor:-1.0/zoomFactor;
+            zoomFactor = zoomFactor == 1? 0:zoomFactor;
+            //console.log(`Touch move event handler! zoomFactor = ${zoomFactor}`);
+            changeFOV(zoomFactor*20);
         }
     }
 
