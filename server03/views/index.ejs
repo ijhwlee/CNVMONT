@@ -35,7 +35,7 @@
             <iframe src="/3dmodels/capsule" width="300" height = "200" title="Capsule" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 style="overflow: hidden;" scrolling="no"
-                allowfullscreen></iframe>
+                allowfullscreen></iframe><br>
             <a href="/3dmodels/capsule" target="_blank">Cpasule</a>
         </div>
     <% for (let i = 0; i < modelList.length; i++) { %>
@@ -43,7 +43,7 @@
             <iframe src=<%= modelList[i] %> width="300" height = "200" title=<%= modelList[i] %> frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 style="overflow: hidden;" scrolling="no"
-                allowfullscreen></iframe>
+                allowfullscreen></iframe><br>
             <a href=<%= modelList[i] %> target="_blank"><%= modelList[i] %></a>
         </div>
     <% } %>
