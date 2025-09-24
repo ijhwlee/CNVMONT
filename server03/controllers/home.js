@@ -35,4 +35,22 @@ const showHome =  (req, res) => {
     })
 };
 
-module.exports = showHome;
+const showThree =  (req, res) => {
+    const modelPath = path.join(__dirname, '../public/model');
+    fs.readdir(modelPath, (err, files) => {
+        if(err) {
+            console.err('Error reading directory: ', err);
+            return;
+        }
+        else {
+            files.forEach((file, index, files) => {
+                const name = file.split('.')[0];
+                files[index] = '/3dmodels/'+name;
+            })
+            file = '/model/sketchfab_3d_editor_challenge_littlest_tokyo.glb'
+            res.render("three_examples", {title: 'THREE little Tokyo', modelPath: file});
+        }
+    })
+};
+
+module.exports = {showHome, showThree};
