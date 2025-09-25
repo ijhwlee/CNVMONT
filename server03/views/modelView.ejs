@@ -339,7 +339,7 @@
         import { DRACOLoader } from '/lib/three/jsm/loaders/DRACOLoader.js';
 
         let mixer;
-        let default_size = 3.0;
+        let default_size = 4.0;
 
         const clock = new THREE.Clock();
         const container = document.getElementById( 'container' );
@@ -450,26 +450,34 @@
                 const model = gltf.scene;
                 model.position.set( 1, 1, 0 );
                 model.scale.set( 0.01, 0.01, 0.01 );
-                let size = new THREE.Vector3();
-                let box = new THREE.Box3().setFromObject(model);
-                box.getSize(size);
-                console.log(`Model size = (${size.x}, ${size.y}, ${size.z})`)
-
+                
                 if (gltf.animations && gltf.animations.length > 0) {
+                    let size = new THREE.Vector3();
+                    let box = new THREE.Box3().setFromObject(model);
+                    box.getSize(size);
+                    const scale_value = default_size/Math.max(size.x, size.y)/100;
+                    model.position.set( 0, 0, 0 );
+                    model.scale.set( scale_value, scale_value, scale_value );
+                    size = new THREE.Vector3();
+                    box = new THREE.Box3().setFromObject(model);
+                    box.getSize(size);
+                    console.log(`Scaled Model size = (${size.x}, ${size.y}, ${size.z})`)
                     scene.add( model );
                     mixer = new THREE.AnimationMixer( model );
                     mixer.clipAction( gltf.animations[ 0 ] ).play();
                     animationExist = true;
                 }
                 else {
-                    const scale_value = default_size/Math.max(size.x, size.y, size.z)/100;
+                    let size = new THREE.Vector3();
+                    let box = new THREE.Box3().setFromObject(model);
+                    box.getSize(size);
+                    const scale_value = default_size/Math.max(size.x, size.y)/100;
                     model.position.set( 0, 0, 0 );
                     model.scale.set( scale_value, scale_value, scale_value );
-                    //console.log(`gltf.animations = ${gltf.animations}, gltf.animations.length = ${gltf.animations.length}`);
                     size = new THREE.Vector3();
                     box = new THREE.Box3().setFromObject(model);
                     box.getSize(size);
-                    console.log(`Model size = (${size.x}, ${size.y}, ${size.z})`)
+                    console.log(`Scaled Model size = (${size.x}, ${size.y}, ${size.z})`)
                     scene.add( model );
                 }
 
@@ -492,6 +500,27 @@
             renderer.setSize( window.innerWidth, window.innerHeight );
 
         };
+
+        function fitModelToView(model) {
+            const box = new THREE.Box3().setFromObject(model);
+            const size = box.getSize(new THREE.Vector3());
+            const center = box.getCenter(new THREE.Vector3());
+
+            // Center the model
+            model.position.sub(center);
+
+            // Adjust camera distance
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const fov = camera.fov * (Math.PI / 180);
+            const cameraZ = maxDim / (2 * Math.tan(fov / 2));
+
+            camera.position.set(0, 0, cameraZ * 1.5);
+            camera.lookAt(0, 0, 0);
+
+            // Optional: update controls
+            controls.target.set(0, 0, 0);
+            controls.update();
+        }
 
         function animate() {
 
@@ -523,7 +552,7 @@
 </head>
 <body>
   <div id="container">
-    <div id="loader_glb" style="position: absolute; top: 50%; left: 50%; width:300px; background:#ccc;">
+    <div id="loader_glb" style="position:absolute; top: 50%; left: 10%; width:300px; background:#ccc;">
       <div id="progress_glb" style="text-align: center; width:0%; height:24px; background:#76c7c0;">
         <span id="percent_glb" style="margin-top: 2px; font-family: sans-serif; font-size: 12px; font-weight: bold">0%</span>
       </div>
