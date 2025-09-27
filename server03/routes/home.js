@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {showHome, showThree} = require("../controllers/home");
+const {showHome, showThree, showSkinning} = require("../controllers/home");
 
 router
     .route("/")
@@ -9,5 +9,9 @@ router
 router
     .route("/three_examples")
     .get(showThree)
+
+router
+    .route("/three_skinning")
+    .get(showSkinning)
 
 module.exports = router;
