@@ -10,32 +10,6 @@
 				color: #f00;
 			}
 		</style>
-	</head>
-	<body>
-		<div id="container">
-			<div id="loader_glb" style="position:absolute; top: 50%; left: 10%; width:300px; background:#ccc;">
-				<div id="progress_glb" style="text-align: center; width:0%; height:24px; background:#76c7c0;">
-					<span id="percent_glb" style="margin-top: 2px; font-family: sans-serif; font-size: 12px; font-weight: bold">0%</span>
-				</div>
-			</div>
-		</div>
-		<!--
-		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - Skeletal Animation Blending
-			(model from <a href="https://www.mixamo.com/" target="_blank" rel="noopener">mixamo.com</a>)<br/>
-			Note: crossfades are possible with blend weights being set to (1,0,0), (0,1,0) or (0,0,1)
-		</div>
-
-		<script type="importmap">
-			{
-				"imports": {
-					"three": "../build/three.module.js",
-					"three/addons/": "./jsm/"
-				}
-			}
-		</script>
-		-->
-
 		<script type="module">
 
 			import * as THREE from '/lib/three/three.module.js';
@@ -44,8 +18,11 @@
 			import { GUI } from '/lib/three/jsm/libs/lil-gui.module.min.js';
 
 			import { GLTFLoader } from '/lib/three/jsm/loaders/GLTFLoader.js';
+			import { OrbitControls } from '/lib/three/jsm/controls/OrbitControls.js';
 
-			let scene, renderer, camera, stats;
+			import { CNVMONT_utils } from '/lib/cnvmont/utils_cnvmont.js';
+
+			let scene, renderer, camera, stats, controls;
 			let model, skeleton, mixer, clock;
 			let controlPanel;
 
@@ -100,10 +77,15 @@
 				mesh.receiveShadow = true;
 				scene.add( mesh );
 
+				const cnvmont_utils = new CNVMONT_utils();
+
 				const loader = new GLTFLoader();
 				loader.load( '<%= modelPath %>', function ( gltf ) {
 
 					model = gltf.scene;
+					cnvmont_utils.fitModelToView(model, camera, controls);
+					camera.position.set( 1, 2, - 3 );
+					camera.lookAt( 0, 1, 0 );
 					scene.add( model );
 
 					model.traverse( function ( object ) {
@@ -155,6 +137,13 @@
 				renderer.shadowMap.enabled = true;
 				container.appendChild( renderer.domElement );
 
+				controls = new OrbitControls(camera, renderer.domElement);
+				controls.target.set( 0, 0.5, 0 );
+				controls.update();
+				controls.enablePan = false;
+				controls.enableDamping = true;
+
+				
 				stats = new Stats();
 				container.appendChild( stats.dom );
 
@@ -524,6 +513,32 @@
 			}
 
 		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="loader_glb" style="position:absolute; top: 50%; left: 10%; width:300px; background:#ccc;">
+				<div id="progress_glb" style="text-align: center; width:0%; height:24px; background:#76c7c0;">
+					<span id="percent_glb" style="margin-top: 2px; font-family: sans-serif; font-size: 12px; font-weight: bold">0%</span>
+				</div>
+			</div>
+		</div>
+		<!--
+		<div id="info">
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - Skeletal Animation Blending
+			(model from <a href="https://www.mixamo.com/" target="_blank" rel="noopener">mixamo.com</a>)<br/>
+			Note: crossfades are possible with blend weights being set to (1,0,0), (0,1,0) or (0,0,1)
+		</div>
+
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "../build/three.module.js",
+					"three/addons/": "./jsm/"
+				}
+			}
+		</script>
+		-->
+
 
 	</body>
 </html>
