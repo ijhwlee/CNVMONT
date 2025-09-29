@@ -14,9 +14,8 @@ let controlPanel;
 
 const crossFadeControls = [];
 
-let idleAction, walkAction, runAction;
-let idleWeight, walkWeight, runWeight;
-let actionClips, actionWeights, actionNames;
+let idleAction;
+let actionClips, actionWeights, actionNames, modifyNames, crossFades, toIdleIndex;
 let actions, settings;
 
 let singleStepMode = false;
@@ -71,8 +70,8 @@ function init() {
 
 		model = gltf.scene;
 		cnvmont_utils.fitModelToView(model, camera, controls);
-		camera.position.set( 1, 2, - 3 );
-		camera.lookAt( 0, 1, 0 );
+		//camera.position.set( 1, 2, - 3 );
+		//camera.lookAt( 0, 1, 0 );
 		scene.add( model );
 
 		model.traverse( function ( object ) {
@@ -90,17 +89,19 @@ function init() {
 		//
 		actionNames = [];
 		actionClips = [];
+		actionWeights = [];
 		const animations = gltf.animations;
 		for(let i = 0; i<animations.length; i++) {
-			console.log(`Animation[${i}]:`);
-			console.log(`    name = ${animations[i].name}`);
-			console.log(`    duration = ${animations[i].duration}`);
-			console.log(`    uuid = ${animations[i].uuid}`);
-			console.log(`    tracks = ${animations[i].tracks}`);
+			//console.log(`Animation[${i}]:`);
+			//console.log(`    name = ${animations[i].name}`);
+			//console.log(`    duration = ${animations[i].duration}`);
+			//console.log(`    uuid = ${animations[i].uuid}`);
+			//console.log(`    tracks = ${animations[i].tracks}`);
 			actionNames.push(animations[i].name);
 			actionClips.push(animations[i]);
 			actionWeights.push(0.0);
-			if (animations[i].name === 'walk') {
+			if (animations[i].name.toUpperCase() === 'WALK' ||
+				animations[i].name.toUpperCase() === 'WALKING') {
 				actionWeights[i] = 1.0;
 			}
 		}
@@ -109,15 +110,12 @@ function init() {
 
 		actions = [];
 		for(let i = 0; i<animations.length; i++) {
-			action = mixer.clipAction( animations[ i ] );
+			const action = mixer.clipAction( animations[ i ] );
+			if (actionNames[i].toUpperCase() === 'IDLE') {
+				idleAction = action;
+			}
 			actions.push(action);
 		}
-		//idleAction = mixer.clipAction( animations[ 0 ] );
-		//walkAction = mixer.clipAction( animations[ 3 ] );
-		//runAction = mixer.clipAction( animations[ 1 ] );
-
-		//actions = [ idleAction, walkAction, runAction ];
-
 		//
 		createPanel();
 		
@@ -166,43 +164,6 @@ function createPanel() {
 	const folder5 = panel.addFolder( 'Blend Weights' );
 	const folder6 = panel.addFolder( 'General Speed' );
 
-	/*
-	settings = {
-		'show model': true,
-		'show skeleton': false,
-		'deactivate all': deactivateAllActions,
-		'activate all': activateAllActions,
-		'pause/continue': pauseContinue,
-		'make single step': toSingleStepMode,
-		'modify step size': 0.05,
-		'from walk to idle': function () {
-
-			prepareCrossFade( walkAction, idleAction, 1.0 );
-
-		},
-		'from idle to walk': function () {
-
-			prepareCrossFade( idleAction, walkAction, 0.5 );
-
-		},
-		'from walk to run': function () {
-
-			prepareCrossFade( walkAction, runAction, 2.5 );
-
-		},
-		'from run to walk': function () {
-
-			prepareCrossFade( runAction, walkAction, 5.0 );
-
-		},
-		'use default duration': true,
-		'set custom duration': 3.5,
-		'modify idle weight': 0.0,
-		'modify walk weight': 1.0,
-		'modify run weight': 0.0,
-		'modify time scale': 1.0
-	};
-	*/
 	settings = {
 		'show model': true,
 		'show skeleton': false,
@@ -215,20 +176,25 @@ function createPanel() {
 		'set custom duration': 3.5,
 		'modify time scale': 1.0
 	};
-	let modifyNames = [];
+	modifyNames = [];
 	actionNames.forEach(function(name) {
 		const fieldName = `modify ${name} weight`;
 		modifyNames.push(fieldName);
 		settings[fieldName] = 0.0;
-		if (fieldName === 'wlak')
+		if (name.toUpperCase() === 'WALK' || name.toUpperCase() === 'WALKING')
 			settings[fieldName] = 1.0;
 	} );
-	let crossFades = [];
-	for (let i=0; i < action.length; i++) {
+	crossFades = [];
+	let idx = 0;
+	for (let i=0; i < actions.length; i++) {
 		for (let j=0; j < actions.length; j++) {
 			if (i != j) {
 				const fieldName = `from ${actionNames[i]} to ${actionNames[j]}`;
 				crossFades.push(fieldName);
+				//console.log(`actionNames[${j}] = ${actionNames[j]}`);
+				if (actionNames[j].toUpperCase() === 'IDLE')
+					toIdleIndex = idx;
+				idx++;
 				let duration = 1.0;
 				settings[fieldName] = function() {
 					prepareCrossFade( actions[i], actions[j], duration );
@@ -236,7 +202,7 @@ function createPanel() {
 			}
 		}
 	}
-
+	console.log(`toIdleIndex = ${toIdleIndex}`);
 	
 	folder1.add( settings, 'show model' ).onChange( showModel );
 	folder1.add( settings, 'show skeleton' ).onChange( showSkeleton );
@@ -245,32 +211,13 @@ function createPanel() {
 	folder3.add( settings, 'pause/continue' );
 	folder3.add( settings, 'make single step' );
 	folder3.add( settings, 'modify step size', 0.01, 0.1, 0.001 );
+	//console.log(`crossFades.length = ${crossFades.length}`);
 	for (let i=0; i < crossFades.length; i++) {
-		crossFadeControls.push( folder4.add( settings, crossfades[i] ) );
+		crossFadeControls.push( folder4.add( settings, crossFades[i] ) );
 	}
-	//crossFadeControls.push( folder4.add( settings, 'from walk to idle' ) );
-	//crossFadeControls.push( folder4.add( settings, 'from idle to walk' ) );
-	//crossFadeControls.push( folder4.add( settings, 'from walk to run' ) );
-	//crossFadeControls.push( folder4.add( settings, 'from run to walk' ) );
+	//console.log(`crossFadeContols.length = ${crossFadeControls.length}`);
 	folder4.add( settings, 'use default duration' );
 	folder4.add( settings, 'set custom duration', 0, 10, 0.01 );
-	/*
-	folder5.add( settings, 'modify idle weight', 0.0, 1.0, 0.01 ).listen().onChange( function ( weight ) {
-
-		setWeight( idleAction, weight );
-
-	} );
-	folder5.add( settings, 'modify walk weight', 0.0, 1.0, 0.01 ).listen().onChange( function ( weight ) {
-
-		setWeight( walkAction, weight );
-
-	} );
-	folder5.add( settings, 'modify run weight', 0.0, 1.0, 0.01 ).listen().onChange( function ( weight ) {
-
-		setWeight( runAction, weight );
-
-	} );
-	*/
 	for (let i=0; i < modifyNames.length; i++) {
 		folder5.add( settings, modifyNames[i], 0.0, 1.0, 0.01 ).listen().onChange( function ( weight ) {
 			setWeight( actions[i], weight );
@@ -321,9 +268,9 @@ function deactivateAllActions() {
 
 function activateAllActions() {
 
-	setWeight( idleAction, settings[ 'modify idle weight' ] );
-	setWeight( walkAction, settings[ 'modify walk weight' ] );
-	setWeight( runAction, settings[ 'modify run weight' ] );
+	for (let i = 0; i < actions.length; i++) {
+		setWeight( actions[i], settings[ modifyNames[i] ] );
+	}
 
 	actions.forEach( function ( action ) {
 
@@ -474,9 +421,9 @@ function setWeight( action, weight ) {
 
 function updateWeightSliders() {
 
-	settings[ 'modify idle weight' ] = idleWeight;
-	settings[ 'modify walk weight' ] = walkWeight;
-	settings[ 'modify run weight' ] = runWeight;
+	for (let i=0; i < actions.length; i++) {
+		settings[ modifyNames[i] ] = actionWeights[i];
+	}
 
 }
 
@@ -484,31 +431,21 @@ function updateWeightSliders() {
 
 function updateCrossFadeControls() {
 
-	if ( idleWeight === 1 && walkWeight === 0 && runWeight === 0 ) {
-
-		crossFadeControls[ 0 ].disable();
-		crossFadeControls[ 1 ].enable();
-		crossFadeControls[ 2 ].disable();
-		crossFadeControls[ 3 ].disable();
-
+	let weightSum = 0.0;
+	for (let i = 0; i < actionWeights.length; i++) {
+		weightSum += actionWeights[i];
 	}
-
-	if ( idleWeight === 0 && walkWeight === 1 && runWeight === 0 ) {
-
-		crossFadeControls[ 0 ].enable();
-		crossFadeControls[ 1 ].disable();
-		crossFadeControls[ 2 ].enable();
-		crossFadeControls[ 3 ].disable();
-
-	}
-
-	if ( idleWeight === 0 && walkWeight === 0 && runWeight === 1 ) {
-
-		crossFadeControls[ 0 ].disable();
-		crossFadeControls[ 1 ].disable();
-		crossFadeControls[ 2 ].disable();
-		crossFadeControls[ 3 ].enable();
-
+	//console.log(`weightSum = ${weightSum}`);
+	for (let i=0; i < actions.length; i++) {
+		if (Math.abs(actionWeights[i] - 1) <= 1.0e-4 && Math.abs(weightSum - 1) <= 1.0e04) {
+			for (let j = 0; j < crossFades.length; j++) {
+				crossFadeControls[ j ].disable();
+			}
+			for (let j = 0; j < crossFades.length; j++) {
+				if (crossFades[j].includes(`from ${actionNames[i]}`))
+					crossFadeControls[ j ].enable();
+			}
+		}
 	}
 
 }
@@ -524,9 +461,9 @@ function onWindowResize() {
 
 function animate() {
 
-	idleWeight = idleAction.getEffectiveWeight();
-	walkWeight = walkAction.getEffectiveWeight();
-	runWeight = runAction.getEffectiveWeight();
+	for (let i = 0; i < actions.length; i++) {
+		actionWeights[i] = actions[i].getEffectiveWeight();
+	}
 
 	// Update the panel values if weights are modified from "outside" (by crossfadings)
 
