@@ -52,6 +52,24 @@ const showSkinning =  (req, res) => {
     })
 };
 
+const showEditing =  (req, res) => {
+    const modelPath = path.join(__dirname, '../public/model');
+    fs.readdir(modelPath, (err, files) => {
+        if(err) {
+            console.err('Error reading directory: ', err);
+            return;
+        }
+        else {
+            files.forEach((file, index, files) => {
+                const name = file.split('.')[0];
+                files[index] = '/editing/'+name;
+            })
+            files.unshift('/editing/blanck');
+            res.render("editing", {editingList: files});
+        }
+    })
+};
+
 const showThree =  (req, res) => {
     const modelPath = path.join(__dirname, '../public/model');
     fs.readdir(modelPath, (err, files) => {
@@ -70,4 +88,4 @@ const showThree =  (req, res) => {
     })
 };
 
-module.exports = {showHome, showThree, showSkinning};
+module.exports = {showHome, showThree, showSkinning, showEditing};

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title><%= title %></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+		<style>
+			a {
+				color: #f00;
+			}
+			body { margin: 0; overflow: hidden; }
+			canvas { display: block; }
+			#ui {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			z-index: 10;
+			background: rgba(255,255,255,0.8);
+			padding: 10px;
+			border-radius: 5px;
+			}
+		</style>
+		<script>
+			let modelPath = '<%= modelPath %>';
+			let showControl = '<%= showControl %>';
+		</script>
+		<script type="module" src = '/lib/cnvmont/editing_cnvmont.js'></script>
+	</head>
+	<body>
+		<div id="ui">
+			<button onclick="addCube()">큐브 추가</button>
+			<button onclick="addSphere()">구 추가</button>
+		</div>
+		<!--
+		<div id="container">
+			<div id="loader_glb" style="position:absolute; top: 50%; left: 10%; width:300px; background:#ccc;">
+				<div id="progress_glb" style="text-align: center; width:0%; height:24px; background:#76c7c0;">
+					<span id="percent_glb" style="margin-top: 2px; font-family: sans-serif; font-size: 12px; font-weight: bold">0%</span>
+				</div>
+			</div>
+		</div>
+		-->
+		<!--
+		<div id="info">
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - Skeletal Animation Blending
+			(model from <a href="https://www.mixamo.com/" target="_blank" rel="noopener">mixamo.com</a>)<br/>
+			Note: crossfades are possible with blend weights being set to (1,0,0), (0,1,0) or (0,0,1)
+		</div>
+
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "../build/three.module.js",
+					"three/addons/": "./jsm/"
+				}
+			}
+		</script>
+		-->
+
+
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CNVMONT Web3D Editing</title>
+  <style>
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0px;
+    }
+
+    .grid-item {
+    background-color: #ffffff;
+    color: white;
+    padding: 0px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 0px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Test Web3D server: Editing</h1>
+    <div class="grid-container">
+      <% for (let i = 0; i < editingList.length; i++) { %>
+        <div class="grid-item">
+            <iframe src=<%= editingList[i] %>/false width="300" height = "200" title=<%= editingList[i] %> frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                style="overflow: hidden;" scrolling="no"
+                allowfullscreen></iframe><br>
+            <a href=<%= editingList[i] %>/true target="_blank"><%= editingList[i] %></a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
