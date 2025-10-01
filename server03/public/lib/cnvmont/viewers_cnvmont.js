@@ -46,7 +46,7 @@
         const dracoLoader = new DRACOLoader();
         dracoLoader.setDecoderPath( '/lib/three/jsm/libs/draco/gltf/' );
 
-        const cnvmont_utils = new CNVMONT_utils();
+        const cnvmont_utils = new CNVMONT_utils(4.0, 1.3);
 
         let modelLoaded = false;
         let animationExist = false;

@@ -63,7 +63,7 @@ function init() {
 	mesh.receiveShadow = true;
 	scene.add( mesh );
 
-	const cnvmont_utils = new CNVMONT_utils();
+	const cnvmont_utils = new CNVMONT_utils(4.0, 1.3);
 
 	const loader = new GLTFLoader();
 	loader.load( modelPath, function ( gltf ) {

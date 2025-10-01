@@ -6,8 +6,9 @@ import { GUI } from '/lib/three/jsm/libs/lil-gui.module.min.js';
 import { GLTFLoader } from '/lib/three/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from '/lib/three/jsm/controls/OrbitControls.js';
 
-import { CNVMONT_utils } from '/lib/cnvmont/utils_cnvmont.js';
+import { CNVMONT_menus } from '/lib/cnvmont/utils_cnvmont.js';
 
+let modelLoaded = false;
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf0f0f0);
@@ -17,8 +18,9 @@ import { CNVMONT_utils } from '/lib/cnvmont/utils_cnvmont.js';
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-	//const container = document.getElementById( 'container' );
-    document.body.appendChild(renderer.domElement);
+	const container = document.getElementById( 'container' );
+    container.appendChild(renderer.domElement);
+    //document.body.appendChild(renderer.domElement);
 
     // Controls
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -33,17 +35,29 @@ import { CNVMONT_utils } from '/lib/cnvmont/utils_cnvmont.js';
     scene.add(directionalLight);
 
     // Ground
-    const gridHelper = new THREE.GridHelper(10, 10);
+	let size_x = 30;
+	let size_y = 30;
+    const gridHelper = new THREE.GridHelper(size_x, size_y);
     scene.add(gridHelper);
 
-	if (showControl == 'false') {
-		document.getElementById('ui').style.display='none';
-	}
+	//if (showControl == 'false') {
+	//	document.getElementById('ui').style.display='none';
+	//}
 
     // Object List
     const objects = [];
 
-    // Add Cube
+	// menus
+    const menus = [{'title': 'File', 'items':['Open', 'Save', 'Save As ...', 'Exit']},
+               {'title': 'Edit', 'items':['Add Cube', 'Add Sphere', 'Add Cylinder']}, 
+				] 
+	const menuControl = new CNVMONT_menus(menus, size_x, size_y); 
+	const controlPanel = menuControl.createPanel(scene, objects);
+	if(showControl == 'false') {
+		controlPanel.domElement.style.display = 'none';
+	}
+
+	// Add Cube
     window.addCube = function() {
       const geometry = new THREE.BoxGeometry();
       const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
@@ -65,10 +79,15 @@ import { CNVMONT_utils } from '/lib/cnvmont/utils_cnvmont.js';
 
     // Animate
     function animate() {
-      requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
+		requestAnimationFrame(animate);
+		controls.update();
+		renderer.render(scene, camera);
     }
+
+	modelLoaded = true;
+	if(modelLoaded) {
+		document.getElementById('progress_glb').style.display = "none";
+	}
 
     animate();
 
