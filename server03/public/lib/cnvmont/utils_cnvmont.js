@@ -73,12 +73,16 @@ export class CNVMONT_menus {
     size_y;
     // menus is a list menu dictionary containing title, and items
     //menus = [{'title': 'File', 'items':['Open', 'Save', 'Save As ...', 'Exit']},
+    //           {'title': 'Edit', 'items': [
+    //                  {'title': 'Selected', 'items':['Cube', 'Sphere', 'Cylinder']}, 
+    //                  {'title': 'Random', 'items':['Cube', 'Sphere', 'Cylinder']}]}, 
     //           {'title': 'Edit', 'items':['Cube', 'Sphere', 'Cylinder']}, 
     //           {'title': 'Help', 'items':['About']}] 
     constructor(menus, size_x, size_y) {
         this.menus = menus;
         this.size_x = size_x;
         this.size_y = size_y;
+        console.log(`menus.length = ${this.menus.length}`);
     }
 
     createPanel(scene, objects) {
@@ -86,7 +90,7 @@ export class CNVMONT_menus {
         console.log(`scene = ${this.scene}`);
         this.objects = objects;
         console.log(`objects = ${this.objects}`);
-        const panel = new GUI( { width: 90 } );
+        const panel = new GUI( { width: 190 } );
         //panel.domElement.querySelector('.name').style.textAlign = 'right';
 
         this.settings = {
@@ -94,21 +98,33 @@ export class CNVMONT_menus {
             'Save': () => this.saveMenu(),
             'Save As ...': () => this.saveAsMenu(),
             'Exit': () => this.exitMenu(),
+            'Add Random Cube': () => this.addRandomCube(),
+            'Add Random Sphere': () => this.addRandomSphere(),
+            'Add Random Cylinder': () => this.addRandomCylinder(),
             'Add Cube': () => this.addCube(),
             'Add Sphere': () => this.addSphere(),
             'Add Cylinder': () => this.addCylinder(),
         };
         this.folders = [];
-        for (let i=0; i < this.menus.length; i++) {
-            const folder = panel.addFolder( this.menus[i]['title'] );
-            this.folders.push(folder);
-            for(let j = 0; j < this.menus[i].items.length; j++) {
-                folder.add( this.settings, this.menus[i].items[j] );
-            }
-        }
+        this.addFolder(panel, this.menus);
         this.closeAllFolders();
         this.controlPanel = panel;
         return this.controlPanel;
+    }
+
+    addFolder(parent, menus) {
+        //console.log(`menus.length = ${menus.length}`);
+        for (let i=0; i < menus.length; i++) {
+            //console.log(`menus[${i}] = ${menus[i]}`);
+            if (menus[i].hasOwnProperty('title')) {
+                const folder = parent.addFolder( menus[i]['title'] );
+                this.folders.push(folder);
+                this.addFolder(folder, menus[i]['items']);
+            }
+            else {
+                parent.add( this.settings, menus[i] );
+            }
+        }
     }
 
     closeAllFolders() {
@@ -157,6 +173,43 @@ export class CNVMONT_menus {
 	
     // Add Cylinder
     addCylinder() {
+      const geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
+      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+      const material = new THREE.MeshStandardMaterial({ color: randomColor });
+      //const material = new THREE.MeshStandardMaterial({ color: 0xff7700 });
+      const cylinder = new THREE.Mesh(geometry, material);
+      cylinder.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
+      this.scene.add(cylinder);
+      this.objects.push(cylinder);
+    }
+    // Add Cube
+    addRandomCube() {
+      const geometry = new THREE.BoxGeometry();
+      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+      const material = new THREE.MeshStandardMaterial({ color: randomColor });
+      //const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
+      const cube = new THREE.Mesh(geometry, material);
+      //cube.position.set(Math.random()*2-1, Math.random()*3, Math.random()*2-1);
+      cube.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
+      this.scene.add(cube);
+      this.objects.push(cube);
+    }
+
+    // Add Sphere
+    addRandomSphere() {
+      const geometry = new THREE.SphereGeometry(0.5, 32, 32);
+      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+      const material = new THREE.MeshStandardMaterial({ color: randomColor });
+      //const material = new THREE.MeshStandardMaterial({ color: 0xff7700 });
+      const sphere = new THREE.Mesh(geometry, material);
+      //sphere.position.set(Math.random()*2-1, Math.random(), Math.random()*2-1);
+      sphere.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
+      this.scene.add(sphere);
+      this.objects.push(sphere);
+    }
+	
+    // Add Cylinder
+    addRandomCylinder() {
       const geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
       const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
       const material = new THREE.MeshStandardMaterial({ color: randomColor });

@@ -49,7 +49,10 @@ let modelLoaded = false;
 
 	// menus
     const menus = [{'title': 'File', 'items':['Open', 'Save', 'Save As ...', 'Exit']},
-               {'title': 'Edit', 'items':['Add Cube', 'Add Sphere', 'Add Cylinder']}, 
+               {'title': 'Edit', 'items':[
+						{'title': 'Selected', 'items': ['Add Cube', 'Add Sphere', 'Add Cylinder']},
+						{'title': 'Random', 'items': ['Add Random Cube', 'Add Random Sphere', 'Add Random Cylinder']},
+					]}, 
 				] 
 	const menuControl = new CNVMONT_menus(menus, size_x, size_y); 
 	const controlPanel = menuControl.createPanel(scene, objects);
