@@ -28,7 +28,7 @@ export class CNVMONT_utils {
         let box = new THREE.Box3().setFromObject(model);
         let center = box.getCenter(new THREE.Vector3());
         box.getSize(size);
-        console.log(`Model size = (${size.x}, ${size.y}, ${size.z})`)
+        //console.log(`Model size = (${size.x}, ${size.y}, ${size.z})`)
         let maxDim = Math.max(size.x, size.y, size.z);
         if (maxDim < 1) {
             const scale_value = this.default_size/maxDim;
@@ -42,7 +42,7 @@ export class CNVMONT_utils {
         const fov = camera.fov * (Math.PI / 180);
         let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
         cameraZ *= this.offset; // Add some padding
-        console.log(`fov = ${fov}, cameraZ = ${cameraZ}, maxDim = ${maxDim}`);
+        //console.log(`fov = ${fov}, cameraZ = ${cameraZ}, maxDim = ${maxDim}`);
         camera.position.set(center.x, center.y, cameraZ);
         camera.lookAt(center);
 
@@ -71,6 +71,7 @@ export class CNVMONT_menus {
     scene;
     size_x;
     size_y;
+    editStatus;
     // menus is a list menu dictionary containing title, and items
     //menus = [{'title': 'File', 'items':['Open', 'Save', 'Save As ...', 'Exit']},
     //           {'title': 'Edit', 'items': [
@@ -78,18 +79,19 @@ export class CNVMONT_menus {
     //                  {'title': 'Random', 'items':['Cube', 'Sphere', 'Cylinder']}]}, 
     //           {'title': 'Edit', 'items':['Cube', 'Sphere', 'Cylinder']}, 
     //           {'title': 'Help', 'items':['About']}] 
-    constructor(menus, size_x, size_y) {
+    constructor(menus, editStatus, size_x, size_y) {
         this.menus = menus;
+        this.editStatus = editStatus;
         this.size_x = size_x;
         this.size_y = size_y;
-        console.log(`menus.length = ${this.menus.length}`);
+        //console.log(`menus.length = ${this.menus.length}`);
     }
 
     createPanel(scene, objects) {
         this.scene = scene;
-        console.log(`scene = ${this.scene}`);
+        //console.log(`scene = ${this.scene}`);
         this.objects = objects;
-        console.log(`objects = ${this.objects}`);
+        //console.log(`objects = ${this.objects}`);
         const panel = new GUI( { width: 190 } );
         //panel.domElement.querySelector('.name').style.textAlign = 'right';
 
@@ -131,92 +133,80 @@ export class CNVMONT_menus {
         for (let i=0; i < this.folders.length; i++) {
             this.folders[i].close();
         }
+        this.editStatus['action'] = 'none';
     }
 
     openMenu() {
         console.log('Open Menu called');
+        this.editStatus['action'] = 'none';
     }
     saveMenu() {
         console.log('Save Menu called');
+        this.editStatus['action'] = 'none';
     }
     saveAsMenu() {
         console.log('Save As ... Menu called');
+        this.editStatus['action'] = 'none';
     }
     exitMenu() {
         console.log('Exit Menu called');
+        this.editStatus['action'] = 'none';
     }
     // Add Cube
     addCube() {
-      const geometry = new THREE.BoxGeometry();
-      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
-      const material = new THREE.MeshStandardMaterial({ color: randomColor });
-      //const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
-      const cube = new THREE.Mesh(geometry, material);
-      //cube.position.set(Math.random()*2-1, Math.random()*3, Math.random()*2-1);
-      cube.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
-      this.scene.add(cube);
-      this.objects.push(cube);
+        this.editStatus['action'] = 'add';
+        this.editStatus['type'] = 'Cube';
     }
 
     // Add Sphere
     addSphere() {
-      const geometry = new THREE.SphereGeometry(0.5, 32, 32);
-      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
-      const material = new THREE.MeshStandardMaterial({ color: randomColor });
-      //const material = new THREE.MeshStandardMaterial({ color: 0xff7700 });
-      const sphere = new THREE.Mesh(geometry, material);
-      //sphere.position.set(Math.random()*2-1, Math.random(), Math.random()*2-1);
-      sphere.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
-      this.scene.add(sphere);
-      this.objects.push(sphere);
+        this.editStatus['action'] = 'add';
+        this.editStatus['type'] = 'Sphere';
     }
 	
     // Add Cylinder
     addCylinder() {
-      const geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
-      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
-      const material = new THREE.MeshStandardMaterial({ color: randomColor });
-      //const material = new THREE.MeshStandardMaterial({ color: 0xff7700 });
-      const cylinder = new THREE.Mesh(geometry, material);
-      cylinder.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
-      this.scene.add(cylinder);
-      this.objects.push(cylinder);
+        this.editStatus['action'] = 'add';
+        this.editStatus['type'] = 'Cylinder';
     }
     // Add Cube
     addRandomCube() {
-      const geometry = new THREE.BoxGeometry();
-      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
-      const material = new THREE.MeshStandardMaterial({ color: randomColor });
-      //const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
-      const cube = new THREE.Mesh(geometry, material);
-      //cube.position.set(Math.random()*2-1, Math.random()*3, Math.random()*2-1);
-      cube.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
-      this.scene.add(cube);
-      this.objects.push(cube);
+        this.editStatus['action'] = 'none';
+        const geometry = new THREE.BoxGeometry();
+        const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+        const material = new THREE.MeshStandardMaterial({ color: randomColor });
+        //const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
+        const cube = new THREE.Mesh(geometry, material);
+        //cube.position.set(Math.random()*2-1, Math.random()*3, Math.random()*2-1);
+        cube.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
+        this.scene.add(cube);
+        this.objects.push(cube);
     }
 
     // Add Sphere
     addRandomSphere() {
-      const geometry = new THREE.SphereGeometry(0.5, 32, 32);
-      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
-      const material = new THREE.MeshStandardMaterial({ color: randomColor });
-      //const material = new THREE.MeshStandardMaterial({ color: 0xff7700 });
-      const sphere = new THREE.Mesh(geometry, material);
-      //sphere.position.set(Math.random()*2-1, Math.random(), Math.random()*2-1);
-      sphere.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
-      this.scene.add(sphere);
-      this.objects.push(sphere);
+        this.editStatus['action'] = 'none';
+        const geometry = new THREE.SphereGeometry(0.5, 32, 32);
+        const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+        const material = new THREE.MeshStandardMaterial({ color: randomColor });
+        //const material = new THREE.MeshStandardMaterial({ color: 0xff7700 });
+        const sphere = new THREE.Mesh(geometry, material);
+        //sphere.position.set(Math.random()*2-1, Math.random(), Math.random()*2-1);
+        sphere.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
+        this.scene.add(sphere);
+        this.objects.push(sphere);
     }
 	
     // Add Cylinder
     addRandomCylinder() {
-      const geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
-      const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
-      const material = new THREE.MeshStandardMaterial({ color: randomColor });
-      //const material = new THREE.MeshStandardMaterial({ color: 0xff7700 });
-      const cylinder = new THREE.Mesh(geometry, material);
-      cylinder.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
-      this.scene.add(cylinder);
-      this.objects.push(cylinder);
+        this.editStatus['action'] = 'none';
+        const geometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
+        const randomColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+        const material = new THREE.MeshStandardMaterial({ color: randomColor });
+        //const material = new THREE.MeshStandardMaterial({ color: 0xff7700 });
+        const cylinder = new THREE.Mesh(geometry, material);
+        cylinder.position.set((Math.random()*2-1)*this.size_x*0.5, Math.random()*3, (Math.random()*2-1)*this.size_y*0.5);
+        this.scene.add(cylinder);
+        this.objects.push(cylinder);
     }
 }

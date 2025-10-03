@@ -86,7 +86,7 @@
             const size = new THREE.Vector3();
             const box = new THREE.Box3().setFromObject(model);
             box.getSize(size);
-            console.log(`Model size = (${size.x}, ${size.y}, ${size.z})`)
+            //console.log(`Model size = (${size.x}, ${size.y}, ${size.z})`)
         }
         else if (modelPath == 'capsule') {
             const geometry = new THREE.CapsuleGeometry(1, 2, 8, 16);
@@ -112,7 +112,7 @@
             const size = new THREE.Vector3();
             const box = new THREE.Box3().setFromObject(model);
             box.getSize(size);
-            console.log(`Model size = (${size.x}, ${size.y}, ${size.z})`)
+            //console.log(`Model size = (${size.x}, ${size.y}, ${size.z})`)
         }
         else {
             loader.load( modelPath, function ( gltf ) {
@@ -126,7 +126,7 @@
                     const size = new THREE.Vector3();
                     const box = new THREE.Box3().setFromObject(model);
                     box.getSize(size);
-                    console.log(`Scaled Model size = (${size.x}, ${size.y}, ${size.z})`)
+                    //console.log(`Scaled Model size = (${size.x}, ${size.y}, ${size.z})`)
                     scene.add( model );
                     mixer = new THREE.AnimationMixer( model );
                     mixer.clipAction( gltf.animations[ 0 ] ).play();
@@ -136,7 +136,7 @@
                     const size = new THREE.Vector3();
                     const box = new THREE.Box3().setFromObject(model);
                     box.getSize(size);
-                    console.log(`Scaled Model size = (${size.x}, ${size.y}, ${size.z})`)
+                    //console.log(`Scaled Model size = (${size.x}, ${size.y}, ${size.z})`)
                     scene.add( model );
                 }
 

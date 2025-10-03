@@ -202,7 +202,7 @@ function createPanel() {
 			}
 		}
 	}
-	console.log(`toIdleIndex = ${toIdleIndex}`);
+	//console.log(`toIdleIndex = ${toIdleIndex}`);
 	
 	folder1.add( settings, 'show model' ).onChange( showModel );
 	folder1.add( settings, 'show skeleton' ).onChange( showSkeleton );
