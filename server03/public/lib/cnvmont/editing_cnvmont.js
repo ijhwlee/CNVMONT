@@ -5,8 +5,10 @@ import { GUI } from '/lib/three/jsm/libs/lil-gui.module.min.js';
 
 import { GLTFLoader } from '/lib/three/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from '/lib/three/jsm/controls/OrbitControls.js';
+import { DRACOLoader } from '/lib/three/jsm/loaders/DRACOLoader.js';
 
 import { CNVMONT_menus } from '/lib/cnvmont/utils_cnvmont.js';
+import { CNVMONT_utils } from '/lib/cnvmont/utils_cnvmont.js';
 
 let modelLoaded = false;
 const raycaster = new THREE.Raycaster();
@@ -35,7 +37,7 @@ controls.enableDamping = true;
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
 directionalLight.position.set(5, 10, 7.5);
 scene.add(directionalLight);
 
@@ -55,13 +57,60 @@ const menus = [{'title': 'File', 'items':['Open', 'Save', 'Save As ...', 'Exit']
 					{'title': 'Random', 'items': ['Add Random Cube', 'Add Random Sphere', 'Add Random Cylinder']},
 				]}, 
 			] 
+const cnvmont_utils = new CNVMONT_utils(4.0, 1.3);
 const menuControl = new CNVMONT_menus(menus, editStatus, size_x, size_y); 
 const controlPanel = menuControl.createPanel(scene, objects);
 if(showControl == 'false') {
 	controlPanel.domElement.style.display = 'none';
 }
 
-// Add Cube
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath( '/lib/three/jsm/libs/draco/gltf/' );
+const loader = new GLTFLoader();
+loader.setDRACOLoader( dracoLoader );
+console.log(`modelPath = ${modelPath}`);
+if(modelPath.includes('editing')) {
+	modelPath = modelPath.replace('editing', 'model');
+	console.log(`modelPath = ${modelPath}`);
+}
+if (modelPath != 'blank') {
+	loader.load( modelPath, function ( gltf ) {
+
+		const model = gltf.scene;
+		//model.position.set( 1, 1, 0 );
+		//model.scale.set( 0.01, 0.01, 0.01 );
+		cnvmont_utils.fitModelToView(model, camera, controls);
+		
+		if (gltf.animations && gltf.animations.length > 0) {
+			const size = new THREE.Vector3();
+			const box = new THREE.Box3().setFromObject(model);
+			box.getSize(size);
+			//console.log(`Scaled Model size = (${size.x}, ${size.y}, ${size.z})`)
+			scene.add( model );
+			mixer = new THREE.AnimationMixer( model );
+			mixer.clipAction( gltf.animations[ 0 ] ).play();
+			animationExist = true;
+		}
+		else {
+			const size = new THREE.Vector3();
+			const box = new THREE.Box3().setFromObject(model);
+			box.getSize(size);
+			//console.log(`Scaled Model size = (${size.x}, ${size.y}, ${size.z})`)
+			scene.add( model );
+		}
+
+		renderer.setAnimationLoop( animate );
+		modelLoaded = true;
+	}, function (xhr) {
+		const percent = (xhr.loaded / xhr.total) * 100;
+		document.getElementById('progress_glb').style.width = `${percent}%`;
+		document.getElementById('percent_glb').textContent = `Loading...${percent.toFixed(1)}%`;
+	}, function ( e ) {
+		console.error('Error loading model: ', e );
+	} );
+}
+
+// Add Object
 function addObject(type, position) {
 	var geometry = null;
 	//console.log(`type = ${type}, position = ${position}`);

@@ -92,7 +92,7 @@ export class CNVMONT_menus {
         //console.log(`scene = ${this.scene}`);
         this.objects = objects;
         //console.log(`objects = ${this.objects}`);
-        const panel = new GUI( { width: 190 } );
+        const panel = new GUI( { width: 130 } );
         //panel.domElement.querySelector('.name').style.textAlign = 'right';
 
         this.settings = {

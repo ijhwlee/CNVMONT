@@ -12,14 +12,18 @@
 			body { margin: 0; overflow: hidden; }
 			canvas { display: block; }
 			#ui {
-			position: absolute;
-			top: 10px;
-			left: 10px;
-			z-index: 10;
-			background: rgba(255,255,255,0.8);
-			padding: 10px;
-			border-radius: 5px;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				z-index: 10;
+				background: rgba(255,255,255,0.8);
+				padding: 10px;
+				border-radius: 5px;
 			}
+			.lil-gui .name {
+				text-align: left;
+			}
+
 		</style>
 		<script>
 			let modelPath = '<%= modelPath %>';

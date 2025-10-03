@@ -64,7 +64,7 @@ const showEditing =  (req, res) => {
                 const name = file.split('.')[0];
                 files[index] = '/editing/'+name;
             })
-            files.unshift('/editing/blanck');
+            files.unshift('/editing/blank');
             res.render("editing", {editingList: files});
         }
     })
