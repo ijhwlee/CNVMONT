@@ -4,6 +4,7 @@ dist
 security
 public/lib
 public/model
+public/vega3d
 npm-debug.log
 .env
 .DS_Store
