@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My first Verge3D app</title>
+    <style>
+      body { margin: 0; }
+      #v3d-container { position: absolute; width: 100%; height: 100% }
+    </style>
+  </head>
+  <body>
+    <div id="v3d-container"></div>
+    <script src="v3d.js"></script>
+    <script>
+      const app = new v3d.App('v3d-container');
+
+      app.loadScene('cube.glb', () => {
+          app.enableControls();
+          app.run();
+      });
+    </script>
+  </body>
+</html>

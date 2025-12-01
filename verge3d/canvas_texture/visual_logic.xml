@@ -1,0 +1,55 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="635" scrolly="279" scale="0.9">
+    <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id="})Y(9nf#@/[VC8eqU%tF" x="-430" y="-310">
+      <field name="LOAD_COMP_ASSETS">TRUE</field>
+      <field name="FULLSCREEN">TRUE</field>
+      <field name="BKG_TRANSPARENCY">FALSE</field>
+      <field name="PRESERVE_DRAW_BUF">FALSE</field>
+      <field name="FADE_ANNOTATIONS">TRUE</field>
+    </block>
+  </tab>
+  <tab name="main" type="CommonTab" active="true" scrollx="586.4375518607171" scrolly="377.5894014052481" scale="0.7318125977972154">
+    <block xmlns="https://developers.google.com/blockly/xml" type="replaceTexture" id="[9gfb]PP2H,wbj-H?(@," x="-730" y="-270">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" enabledoslot="false" flextexinput="false" notexsharing="false"></mutation>
+      <field name="OLD_TEX_NAME">uv_grid.jpg</field>
+      <value name="MATERIAL">
+        <block type="materialList" id=".CD%jcZMlAO3lD0m7d6h">
+          <field name="FIELDNAME">canvas</field>
+        </block>
+      </value>
+      <value name="NEW_TEX_URL">
+        <shadow type="text" id="/dx=,1f!gsf0iyR[o0yh">
+          <field name="TEXT">./newTexture.png</field>
+        </shadow>
+        <block type="createCanvasElem" id="![v8eKm=YMv#G|^;;~$;">
+          <value name="ID">
+            <shadow type="text" id=",K]cQk-S.o|Azv(U^BPx">
+              <field name="TEXT">my_canvas</field>
+            </shadow>
+          </value>
+          <value name="WIDTH">
+            <shadow type="math_number" id="1O:+l*Y?f(01J%kWFD=h">
+              <field name="NUM">300</field>
+            </shadow>
+          </value>
+          <value name="HEIGHT">
+            <shadow type="math_number" id="kKKYPAr@^A{r0~p)J_r=">
+              <field name="NUM">300</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+      <next>
+        <block type="execScript" id="`H#eJjnIUQ}}bzMi:Mw+">
+          <value name="TEXT">
+            <shadow type="textMultiline" id="y.YPJ:Wy,5!UK1D$.;^+">
+              <field name="HIGHLIGHT_MODE">javascript</field>
+              <field name="TEXT" editor-height="22" editor-width="735">const canvasTex = puzzles.canvasTextures['my_canvas'];&amp;#10;const canvas = canvasTex.image;&amp;#10;const ctx = canvas.getContext("2d");&amp;#10;&amp;#10;ctx.fillStyle = 'yellow';&amp;#10;ctx.strokeStyle = 'green';&amp;#10;&amp;#10;ctx.fillRect(0, 0, canvas.width, canvas.height);&amp;#10;ctx.lineWidth = 7;&amp;#10;&amp;#10;ctx.beginPath();&amp;#10;ctx.arc(150, 150, 100, 0, Math.PI * 2, true); // Outer circle&amp;#10;ctx.moveTo(220, 150);&amp;#10;ctx.arc(150, 150, 70, 0, Math.PI, false);  // Mouth (clockwise)&amp;#10;ctx.moveTo(130, 130);&amp;#10;ctx.arc(120, 130, 10, 0, Math.PI * 2, true);  // Left eye&amp;#10;ctx.moveTo(190, 130);&amp;#10;ctx.arc(180, 130, 10, 0, Math.PI * 2, true);  // Right eye&amp;#10;ctx.stroke();&amp;#10;&amp;#10;canvasTex.needsUpdate = true;&amp;#10;              </field>
+            </shadow>
+          </value>
+        </block>
+      </next>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1027" viewport-y="41" viewport-w="487.5" viewport-h="283" viewport-hidden="false" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>

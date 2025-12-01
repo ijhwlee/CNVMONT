@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {showHome, showThree, showSkinning, showEditing} = require("../controllers/home");
+const {showHome, showThree, showSkinning, showEditing, showVega3d} = require("../controllers/home");
 
 router
     .route("/")
@@ -17,5 +17,9 @@ router
 router
     .route("/three_editing")
     .get(showEditing)
+
+router
+    .route("/three_vega3d")
+    .get(showVega3d)
 
 module.exports = router;

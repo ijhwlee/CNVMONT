@@ -1,0 +1,1223 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="875" scrolly="297" scale="0.9">
+    <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id="3eRQb9L7BcFX;XNqrc_V" x="-670" y="-330">
+      <field name="LOAD_COMP_ASSETS">TRUE</field>
+      <field name="FULLSCREEN">TRUE</field>
+      <field name="BKG_TRANSPARENCY">FALSE</field>
+      <field name="PRESERVE_DRAW_BUF">FALSE</field>
+      <field name="FADE_ANNOTATIONS">TRUE</field>
+    </block>
+  </tab>
+  <tab name="main" type="CommonTab" active="true" scrollx="392.7054443359376" scrolly="-84.89999389648426" scale="0.3">
+    <block xmlns="https://developers.google.com/blockly/xml" type="createCSSRule" id="%cS2OgAH)(JxvjVjJr3z" x="-870" y="-350">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" mediaruleslot="false"></mutation>
+      <field name="PARENT">FALSE</field>
+      <value name="CSS_RULE">
+        <shadow type="text" id="$9X`UP|*|]-gQB?]h|KB">
+          <field name="TEXT">.background</field>
+        </shadow>
+      </value>
+      <value name="CSS_RULE_CONT">
+        <shadow type="text" id="F^4v[5r_i2WT:4Xw;;k.">
+          <field name="TEXT"></field>
+        </shadow>
+        <block type="textMultiline" id="JbJ,|GO7dJ8:|{VXBQDU">
+          <field name="HIGHLIGHT_MODE">css</field>
+          <field name="TEXT" editor-height="8" editor-width="735">background-color: black;&amp;#10;position: absolute;&amp;#10;width: 100%;&amp;#10;height: 100%;&amp;#10;left: 0;&amp;#10;top: 0;&amp;#10;z-index: 2;&amp;#10;          </field>
+        </block>
+      </value>
+      <next>
+        <block type="addHTMLElement" id="KWR(4M;D;jPGen4JFV]V">
+          <field name="ELEMENT">div</field>
+          <field name="MODE">TO</field>
+          <field name="PARENT">FALSE</field>
+          <value name="ID">
+            <shadow type="text" id="`XB*uSvmVa%M_](pqcmd">
+              <field name="TEXT">background</field>
+            </shadow>
+          </value>
+          <value name="TARGET_ID">
+            <shadow type="DOMObjectSelector" id=",X;lneO3[g|LZ..,z:ze">
+              <field name="DOM_OBJECT">CONTAINER</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemAttribute" id="XaSaOp(f-fuTagcq=X3F">
+              <field name="ATTRIBUTE">className</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="w.CR-ipO2wP(]E{q-0/6">
+                  <field name="TEXT">background</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="POvp#ML[j.{$J|z^hPnM">
+                  <field name="TEXT">background</field>
+                </shadow>
+              </value>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="createCSSRule" id="Dt?cckwX9edUjop$P8Ef" x="630" y="-370">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" mediaruleslot="false"></mutation>
+      <field name="PARENT">FALSE</field>
+      <value name="CSS_RULE">
+        <shadow type="text" id="gqBoZtY)2VdrCAMI{u.R">
+          <field name="TEXT">.shadows_menu</field>
+        </shadow>
+      </value>
+      <value name="CSS_RULE_CONT">
+        <shadow type="text" id="vdS~Ltrt,7Iq*B@aq6ez">
+          <field name="TEXT"></field>
+        </shadow>
+        <block type="textMultiline" id="[-vUk$8oRBu*{jZ@c7F0">
+          <field name="HIGHLIGHT_MODE">css</field>
+          <field name="TEXT" editor-height="8" editor-width="735">position: absolute;&amp;#10;width: 482px;&amp;#10;height: 62px;&amp;#10;left: 50%;&amp;#10;bottom: 20px;&amp;#10;margin-left: -240px;&amp;#10;z-index: 1;&amp;#10;          </field>
+        </block>
+      </value>
+      <next>
+        <block type="addHTMLElement" id="xfBHEpbZMR-}JPk%QjT]">
+          <field name="ELEMENT">div</field>
+          <field name="MODE">TO</field>
+          <field name="PARENT">FALSE</field>
+          <value name="ID">
+            <shadow type="text" id="5|t3C%(Ww-Ue^e0v.bqG">
+              <field name="TEXT">shadows_menu</field>
+            </shadow>
+          </value>
+          <value name="TARGET_ID">
+            <shadow type="DOMObjectSelector" id="s*mZLPQ1$U1sAvKs5yf]">
+              <field name="DOM_OBJECT">CONTAINER</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemAttribute" id="eGh9`*L~bR8HVNB5*EYD">
+              <field name="ATTRIBUTE">className</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="[dzT}#L-{PkPU!BqMGII">
+                  <field name="TEXT">shadows_menu</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="mxip9qJ{0VRDp/AjHNTB">
+                  <field name="TEXT">shadows_menu</field>
+                </shadow>
+              </value>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="createCSSRule" id="Pz+:,yz:#bT837n0)*pT" x="-870" y="-50">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" mediaruleslot="false"></mutation>
+      <field name="PARENT">FALSE</field>
+      <value name="CSS_RULE">
+        <shadow type="text" id="hb:T}eBzy3TPE@!R^.,i">
+          <field name="TEXT">.menu</field>
+        </shadow>
+      </value>
+      <value name="CSS_RULE_CONT">
+        <shadow type="text" id="sHd[4b,+hnMl^UoAbkEM">
+          <field name="TEXT"></field>
+        </shadow>
+        <block type="textMultiline" id="/g1NdoMP%e0~A~lkd~e^">
+          <field name="HIGHLIGHT_MODE">css</field>
+          <field name="TEXT" editor-height="9" editor-width="735">position: absolute;&amp;#10;width: 420px;&amp;#10;height: 60px;&amp;#10;left: 50%;&amp;#10;top: 50%;&amp;#10;margin-top: -30px;&amp;#10;margin-left: -210px;&amp;#10;z-index: 2;&amp;#10;          </field>
+        </block>
+      </value>
+      <next>
+        <block type="addHTMLElement" id="xfob/}cE-3(jH/htgIRz">
+          <field name="ELEMENT">div</field>
+          <field name="MODE">TO</field>
+          <field name="PARENT">FALSE</field>
+          <value name="ID">
+            <shadow type="text" id=",]YOI@sdsYwwQx|70IZs">
+              <field name="TEXT">menu</field>
+            </shadow>
+          </value>
+          <value name="TARGET_ID">
+            <shadow type="DOMObjectSelector" id="eAzbL1ZxwW@=4ua82c2T">
+              <field name="DOM_OBJECT">CONTAINER</field>
+            </shadow>
+            <block type="text" id="qU0OkPx47$h0f_CsCv}U">
+              <field name="TEXT">background</field>
+            </block>
+          </value>
+          <next>
+            <block type="setHTMLElemAttribute" id="4e;A;ux~IYH6/K?QRDia">
+              <field name="ATTRIBUTE">className</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="GY|*}MK!upgySsPx^yG*">
+                  <field name="TEXT">menu</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="{PrGjGFzl}rvp0yxl/f%">
+                  <field name="TEXT">menu</field>
+                </shadow>
+              </value>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="createCSSRule" id="uDy/s:`t4P!qW]8Y]H2v" x="630" y="-90">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" mediaruleslot="false"></mutation>
+      <field name="PARENT">FALSE</field>
+      <value name="CSS_RULE">
+        <shadow type="text" id="mY+tEo)C0nx)0(1cy`]%">
+          <field name="TEXT">.shadows_icon</field>
+        </shadow>
+      </value>
+      <value name="CSS_RULE_CONT">
+        <shadow type="text" id="?b6XJisDNCI0{G~wrgSs">
+          <field name="TEXT"></field>
+        </shadow>
+        <block type="textMultiline" id="mTN{1aZSwb$sN3XClgx2">
+          <field name="HIGHLIGHT_MODE">css</field>
+          <field name="TEXT" editor-height="15" editor-width="735">position: static;&amp;#10;width: 60px;&amp;#10;height: 60px;&amp;#10;cursor: pointer;&amp;#10;margin-left: 10px;&amp;#10;margin-right: 10px;&amp;#10;float: left;&amp;#10;background-position: top -6px left -6px;&amp;#10;border-radius: 12px;&amp;#10;font-size:16px;&amp;#10;font-weight: bolt;&amp;#10;text-align:center;&amp;#10;font-family: sans-serif;&amp;#10;line-height: 1.3;&amp;#10;          </field>
+        </block>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="createCSSRule" id="o?E:vZ~T+3-$`Kt$F$:c" x="-870" y="290">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" mediaruleslot="false"></mutation>
+      <field name="PARENT">FALSE</field>
+      <value name="CSS_RULE">
+        <shadow type="text" id="y8Xo^NMKUih[8yUIA8KA">
+          <field name="TEXT">.light_icon</field>
+        </shadow>
+      </value>
+      <value name="CSS_RULE_CONT">
+        <shadow type="text" id="Su_,,A1am:5st5k!}hjS">
+          <field name="TEXT"></field>
+        </shadow>
+        <block type="textMultiline" id="E,P2_bm^#S8=pA{~=#Yp">
+          <field name="HIGHLIGHT_MODE">css</field>
+          <field name="TEXT" editor-height="8" editor-width="735">position: static;&amp;#10;width: 60px;&amp;#10;height: 60px;&amp;#10;cursor: pointer;&amp;#10;margin-left: 20px;&amp;#10;margin-right: 20px;&amp;#10;float: left;&amp;#10;          </field>
+        </block>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="addHTMLElement" id="0-#qILxebstJzrj/_z0Y" x="630" y="310">
+      <field name="ELEMENT">div</field>
+      <field name="MODE">TO</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="6tBk099BvofQVM}]hTPC">
+          <field name="TEXT">shadows_type_1</field>
+        </shadow>
+      </value>
+      <value name="TARGET_ID">
+        <shadow type="DOMObjectSelector" id="E0DKrDoYJ[26RUlJV?lP">
+          <field name="DOM_OBJECT">CONTAINER</field>
+        </shadow>
+        <block type="text" id="//pe+!:*k)t!}V[S0Sx1">
+          <field name="TEXT">shadows_menu</field>
+        </block>
+      </value>
+      <next>
+        <block type="setHTMLElemAttribute" id="3{0|5znrNrI(A1~@(PN;">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="S0?7aTS)$W6Kk4j?dLTk">
+              <field name="TEXT">shadows_icon</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="uz8IHj*m.FT!J}]mHvl;">
+              <field name="TEXT">shadows_type_1</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id="~|MeXEffD));s)ESZ!*V">
+              <field name="PROPERTY">backgroundImage</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="2CuA,|/xq^-Ra1HK,{mj">
+                  <field name="TEXT">url('./icons/shadows_basic.png')</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="xl:NR[QQ}@Ido^+1$4x3">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="owzgxy%Ru?L|/}{hdt!g">
+                  <field name="TEXT">shadows_type_1</field>
+                </block>
+              </value>
+              <next>
+                <block type="setHTMLElemAttribute" id="F#i4)pphRNvzE5{5I+OZ">
+                  <field name="ATTRIBUTE">innerHTML</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <block type="text" id="70O]R6p5I?|@Sn!xt:hV">
+                      <field name="TEXT">Basic</field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text" id="j:3pYB#|-|:D?N7K#1}b">
+                      <field name="TEXT">shadows_type_1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="addHTMLElement" id="8hIr4!:xp3lFIvFr,o-}" x="-870" y="530">
+      <field name="ELEMENT">div</field>
+      <field name="MODE">TO</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="o|[A|=7iDRhKy6v!SLrI">
+          <field name="TEXT">point_icon</field>
+        </shadow>
+      </value>
+      <value name="TARGET_ID">
+        <shadow type="DOMObjectSelector" id="d}+jDt`eAGnu+8)2GNe*">
+          <field name="DOM_OBJECT">CONTAINER</field>
+        </shadow>
+        <block type="text" id="FOXN9UaniDp2N1Oh4.;o">
+          <field name="TEXT">menu</field>
+        </block>
+      </value>
+      <next>
+        <block type="setHTMLElemAttribute" id="RjRR3e+/2x3s4nlRl`tv">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="YBf?W?|nx=?:KhTgc[zJ">
+              <field name="TEXT">light_icon</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="`@Q0um}L9g(J]2]ToyLB">
+              <field name="TEXT">point_icon</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id=")sf/{%c(%tEj{/F{g}(z">
+              <field name="PROPERTY">backgroundImage</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="_WTvgvL6*94*5VdwC6Qt">
+                  <field name="TEXT">url('./icons/point.svg')</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="^?EQsZ@`%kg2Y9_})leJ">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="SXc@v$s/P-mG?PrVB=.X">
+                  <field name="TEXT">point_icon</field>
+                </block>
+              </value>
+              <next>
+                <block type="eventHTMLElem" id="[NigAHd5di5z1G|nRbV.">
+                  <field name="EVENT">click</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="ID">
+                    <shadow type="text" id="*CkMU4a|J4QBaFVUVR$(">
+                      <field name="TEXT"></field>
+                    </shadow>
+                    <block type="text" id="UZdU07J$gb7*6S-Ga=O~">
+                      <field name="TEXT">point_icon</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="loadScene" id=";M+*RpE%}qF^sl!#FIo~">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" enableonprogress="false" enableonerror="false" enablealias="false"></mutation>
+                      <value name="URL">
+                        <shadow type="text" id="+cWboRmp9Dj)Z3qL4/ji">
+                          <field name="TEXT">./point.gltf.xz</field>
+                        </shadow>
+                      </value>
+                      <statement name="DO">
+                        <block type="setHTMLElemStyle" id="r4b27;L!YXGAQHiKK+BP">
+                          <field name="PROPERTY">display</field>
+                          <field name="PARENT">FALSE</field>
+                          <value name="VALUE">
+                            <block type="text" id="/%[?a[[d*-v^!};*9?:%">
+                              <field name="TEXT">none</field>
+                            </block>
+                          </value>
+                          <value name="ID">
+                            <shadow type="text" id="df?wJH#eQm3ORMP6;Sz8">
+                              <field name="TEXT">background</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </statement>
+                    </block>
+                  </statement>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="addHTMLElement" id="~`|WI4w(b0ejI/M4c=~2" x="630" y="510">
+      <field name="ELEMENT">div</field>
+      <field name="MODE">TO</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="fx`Z`C03x`L7;h;yBo{I">
+          <field name="TEXT">shadows_type_2</field>
+        </shadow>
+      </value>
+      <value name="TARGET_ID">
+        <shadow type="DOMObjectSelector" id="q=bxw-=@?x#*Jxm@+=TH">
+          <field name="DOM_OBJECT">CONTAINER</field>
+        </shadow>
+        <block type="text" id="(WrHG9j1Y*qedT}#$^.b">
+          <field name="TEXT">shadows_menu</field>
+        </block>
+      </value>
+      <next>
+        <block type="setHTMLElemAttribute" id="3;9Nf@E:x9f)c-0X=ggo">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="h0Q}4~v9S.=M~KuJrl^H">
+              <field name="TEXT">shadows_icon</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="4XT`XNcK/-)7!Jt:v*~)">
+              <field name="TEXT">shadows_type_2</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id="7E6Yq1_0Rb0GtfrhWfny">
+              <field name="PROPERTY">backgroundImage</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="jg3(,oL%jX/,IZuDaL!j">
+                  <field name="TEXT">url('./icons/shadows_bilinear.png')</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="weV%%q`=@`5kB=T#ZyT]">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="v;t8GV#(]n5f!?,66P;z">
+                  <field name="TEXT">shadows_type_2</field>
+                </block>
+              </value>
+              <next>
+                <block type="setHTMLElemAttribute" id="iYu*+F^Aig`(!Z~ap6BB">
+                  <field name="ATTRIBUTE">innerHTML</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <block type="text" id="zyctp,K^]%_EXD*38Q(G">
+                      <field name="TEXT">Bilinear</field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text" id="djFk2}VKN(shUf]A91$.">
+                      <field name="TEXT">shadows_type_2</field>
+                    </shadow>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="addHTMLElement" id="V*?@B*:8Nww7#Y8B}96j" x="630" y="710">
+      <field name="ELEMENT">div</field>
+      <field name="MODE">TO</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="L8zO}@tLC%@p%bc2P!Ta">
+          <field name="TEXT">shadows_type_3</field>
+        </shadow>
+      </value>
+      <value name="TARGET_ID">
+        <shadow type="DOMObjectSelector" id="KU]EMF81w9=I1R0Num.h">
+          <field name="DOM_OBJECT">CONTAINER</field>
+        </shadow>
+        <block type="text" id="kHDz0wj8g_KeypL[x[e!">
+          <field name="TEXT">shadows_menu</field>
+        </block>
+      </value>
+      <next>
+        <block type="setHTMLElemAttribute" id="{:}DsIOW)[Gs=#i_gq1^">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="cSr!*3|t)DD6sl-JXB#w">
+              <field name="TEXT">shadows_icon</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="5Y|TUQJiG48V;VUmBw0I">
+              <field name="TEXT">shadows_type_3</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id=",g;YSMe.bWh2@W)cI+Fq">
+              <field name="PROPERTY">backgroundImage</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="383S5+@yvtSjG3)~qp_w">
+                  <field name="TEXT">url('./icons/shadows_pcfpoisson.png')</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="0FN,lHCmm?=Ham%5Os[8">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="C*LCMs:tII.McHW6yqp#">
+                  <field name="TEXT">shadows_type_3</field>
+                </block>
+              </value>
+              <next>
+                <block type="setHTMLElemAttribute" id="[9OE:v*D]Zlb0km6k_u1">
+                  <field name="ATTRIBUTE">innerHTML</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <block type="text" id="T@JGVfCLLzOW^m.ueJ6*">
+                      <field name="TEXT">PCF</field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text" id="2sX#kGekm%t,`wH07c${">
+                      <field name="TEXT">shadows_type_3</field>
+                    </shadow>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="addHTMLElement" id="a]4;Y9(%E`nQ=@/xmfNd" x="-870" y="830">
+      <field name="ELEMENT">div</field>
+      <field name="MODE">TO</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="p49V6.u_yrMn#KM#|RHc">
+          <field name="TEXT">spot_icon</field>
+        </shadow>
+      </value>
+      <value name="TARGET_ID">
+        <shadow type="DOMObjectSelector" id="0N]NK+H[,Z4s)X@gSB/c">
+          <field name="DOM_OBJECT">CONTAINER</field>
+        </shadow>
+        <block type="text" id="K[Y}#SJ^Y?A[eCwYhw`^">
+          <field name="TEXT">menu</field>
+        </block>
+      </value>
+      <next>
+        <block type="setHTMLElemAttribute" id="pk;xm1?^i-f_dj1tn@0l">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="Azzjgci91LA%4?~N4k}N">
+              <field name="TEXT">light_icon</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="=%Yoa`+;4Pp)/[Uy(|4L">
+              <field name="TEXT">spot_icon</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id=".*uh[fAV+$X9`{=chB#j">
+              <field name="PROPERTY">backgroundImage</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="Tq832)W}yc}QXR?gC_z(">
+                  <field name="TEXT">url('./icons/spot.svg')</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="Q/oQlnCVd~wo^R6TUK1.">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="bI~hsG3`@@GRrWLLoO)|">
+                  <field name="TEXT">spot_icon</field>
+                </block>
+              </value>
+              <next>
+                <block type="eventHTMLElem" id="!w]9][vPIjem.4-Ap@BG">
+                  <field name="EVENT">click</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="ID">
+                    <shadow type="text" id="w1WcH{#FV8rM(XW,Jw$%">
+                      <field name="TEXT"></field>
+                    </shadow>
+                    <block type="text" id="RwZ3$f7{wWsGyS|}TLz%">
+                      <field name="TEXT">spot_icon</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="loadScene" id="-Tpc;:Y$:/z@RK|-6v`o">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" enableonprogress="false" enableonerror="false" enablealias="false"></mutation>
+                      <value name="URL">
+                        <shadow type="text" id="Fl1yNT4c82!FQ9}=dna[">
+                          <field name="TEXT">./spot.gltf.xz</field>
+                        </shadow>
+                      </value>
+                      <statement name="DO">
+                        <block type="setHTMLElemStyle" id="`=8PfwEh2$a=E,S9UM(p">
+                          <field name="PROPERTY">display</field>
+                          <field name="PARENT">FALSE</field>
+                          <value name="VALUE">
+                            <block type="text" id="T!cEZcJl5xoNJVYR,**N">
+                              <field name="TEXT">none</field>
+                            </block>
+                          </value>
+                          <value name="ID">
+                            <shadow type="text" id="nsQ:e;v+2KHM]/u+VD5@">
+                              <field name="TEXT">background</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </statement>
+                    </block>
+                  </statement>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="addHTMLElement" id="OK=Pd*5!)hgkf(o@A.0;" x="630" y="910">
+      <field name="ELEMENT">div</field>
+      <field name="MODE">TO</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="9u6aJeG48,QDKCe,Eq(q">
+          <field name="TEXT">shadows_type_4</field>
+        </shadow>
+      </value>
+      <value name="TARGET_ID">
+        <shadow type="DOMObjectSelector" id="K.ftDWe13#{1I%JVmSwt">
+          <field name="DOM_OBJECT">CONTAINER</field>
+        </shadow>
+        <block type="text" id="0V5NFhN!QRi#XOUs97A)">
+          <field name="TEXT">shadows_menu</field>
+        </block>
+      </value>
+      <next>
+        <block type="setHTMLElemAttribute" id="OJ*0v|5d(mhf|Q09VnA#">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="V$?AfrnN;~po^kIg*LME">
+              <field name="TEXT">shadows_icon</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="UQ0*4#Lbp{!e0m7BKQzE">
+              <field name="TEXT">shadows_type_4</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id="fzh[Qk6/rTm:|DuNl{9Q">
+              <field name="PROPERTY">backgroundImage</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="XLav!pj_yJIN]S*WL:NH">
+                  <field name="TEXT">url('./icons/shadows_esm.png')</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="f`8/GaVOZzk1uX?p$BaX">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="Fd)@LSe}`iAj{}%LZ4[K">
+                  <field name="TEXT">shadows_type_4</field>
+                </block>
+              </value>
+              <next>
+                <block type="setHTMLElemStyle" id="wTr4qfb[Fm(=sH9d3BUR">
+                  <field name="PROPERTY">border</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <block type="text" id="rZO5aq:|es}M]]N[b6z(">
+                      <field name="TEXT">1px solid red</field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text" id="(q1?I:axv+tR%T`syZUZ">
+                      <field name="TEXT"></field>
+                    </shadow>
+                    <block type="text" id="!H)a`J(O{|77{Prs5j?5">
+                      <field name="TEXT">shadows_type_4</field>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="setHTMLElemAttribute" id="5eLt)ERa96T#|3tV9O}_">
+                      <field name="ATTRIBUTE">innerHTML</field>
+                      <field name="PARENT">FALSE</field>
+                      <value name="VALUE">
+                        <block type="text" id=")@X(nrpjx~a:QZ{lI[C]">
+                          <field name="TEXT">ESM</field>
+                        </block>
+                      </value>
+                      <value name="ID">
+                        <shadow type="text" id="3]%NSIO{Rx2J6$J2?+%j">
+                          <field name="TEXT">shadows_type_4</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="addHTMLElement" id="DWJ}E`3s(r~lLkV`(=+;" x="-870" y="1150">
+      <field name="ELEMENT">div</field>
+      <field name="MODE">TO</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="~nEN2Nz0j8_)s|CZ3dQT">
+          <field name="TEXT">area_icon</field>
+        </shadow>
+      </value>
+      <value name="TARGET_ID">
+        <shadow type="DOMObjectSelector" id="BTn])|(TZK)z;^n$xd@u">
+          <field name="DOM_OBJECT">CONTAINER</field>
+        </shadow>
+        <block type="text" id="7E}m@H}xUk$[I[U=6dMB">
+          <field name="TEXT">menu</field>
+        </block>
+      </value>
+      <next>
+        <block type="setHTMLElemAttribute" id="_X{j?2GlJzy62s+$d~ZX">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="s@aeM?G)zFGUonJ|hrwH">
+              <field name="TEXT">light_icon</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="LKvWKSBef~@a5-UcmVD!">
+              <field name="TEXT">area_icon</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id="=m+wJMh;k}UxO`JQHf/i">
+              <field name="PROPERTY">backgroundImage</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="d.+lu@gUZk2CcZ62cAm6">
+                  <field name="TEXT">url('./icons/area.svg')</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="Qv-yN#*Ozgk32T9k846*">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="A^SB8NAf2#)T+3LMDt:I">
+                  <field name="TEXT">area_icon</field>
+                </block>
+              </value>
+              <next>
+                <block type="eventHTMLElem" id="EFDuxe0b:UsXl5YnNm^0">
+                  <field name="EVENT">click</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="ID">
+                    <shadow type="text" id="){xJBg*6|=|VIT-(s)$p">
+                      <field name="TEXT"></field>
+                    </shadow>
+                    <block type="text" id="VeR{Iu4S0lRQ=MF`rC:;">
+                      <field name="TEXT">area_icon</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="loadScene" id="z|cs9ZJdM+MCTH$JFtBh">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" enableonprogress="false" enableonerror="false" enablealias="false"></mutation>
+                      <value name="URL">
+                        <shadow type="text" id="M=m`jRBdP/3n?rhnGFGd">
+                          <field name="TEXT">./area.gltf.xz</field>
+                        </shadow>
+                      </value>
+                      <statement name="DO">
+                        <block type="setHTMLElemStyle" id="@FZ,-}u6R2g146ezRG@x">
+                          <field name="PROPERTY">display</field>
+                          <field name="PARENT">FALSE</field>
+                          <value name="VALUE">
+                            <block type="text" id="n(F(ea|xcF]gPSw|vEVV">
+                              <field name="TEXT">none</field>
+                            </block>
+                          </value>
+                          <value name="ID">
+                            <shadow type="text" id="rCI|gMS}8`G|0B]p+?,5">
+                              <field name="TEXT">background</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </statement>
+                    </block>
+                  </statement>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="setLightParam" id="JL;ExPmK(yclM!qkb$pZ" x="630" y="1250">
+      <field name="TYPE">SHADOW_MAP_SIZE</field>
+      <value name="SHADOW_MAP_SIZE">
+        <shadow type="math_number" id="3t~8tS0gDVrf#=6H`~e/">
+          <field name="NUM">256</field>
+        </shadow>
+      </value>
+      <value name="OBJECT">
+        <shadow type="objectList" id="MXsh*q.K3dc0T%t~W!Fe">
+          <field name="FIELDNAME">&lt;none&gt;</field>
+        </shadow>
+        <block type="text" id="Bw?kswHkGkCDKLeA*Fk.">
+          <field name="TEXT">Spot</field>
+        </block>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="eventHTMLElem" id="7qLr-4tK!nBW@+o7Zpy," x="630" y="1370">
+      <field name="EVENT">click</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="shHN[TOpar8wuH43.,@w">
+          <field name="TEXT">shadows_type_1</field>
+        </shadow>
+      </value>
+      <statement name="DO">
+        <block type="setLightParam" id="agAl,pe~*uRkCGQVJ@LQ">
+          <field name="TYPE">SHADOW_MAP_FILTERING</field>
+          <value name="SHADOW_MAP_FILTERING">
+            <shadow type="shadowMapFilteringTypeDropdown" id="J+OmTlks^qwI,dtlh[2%">
+              <field name="TEXT">BASIC</field>
+            </shadow>
+          </value>
+          <value name="OBJECT">
+            <shadow type="objectList" id="EqP#6=Qq.rl{_g%,2xX2">
+              <field name="FIELDNAME">&lt;none&gt;</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id="Dnx@m_=-}SGV-_1o|4be">
+              <field name="PROPERTY">border</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="qCvfy*/?JkAX!2Ulflb6">
+                  <field name="TEXT">none</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="tb+K;f=[Dw(co3mzaZJc">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="lists_create_with" id=")w+I[ZC1wEtfB[:*CCJ4">
+                  <mutation items="4"></mutation>
+                  <value name="ADD0">
+                    <block type="text" id="h^?fPx[CPiuuQFk6oLu^">
+                      <field name="TEXT">shadows_type_1</field>
+                    </block>
+                  </value>
+                  <value name="ADD1">
+                    <block type="text" id="Vks_$l]9UgFW/9~gG#Rj">
+                      <field name="TEXT">shadows_type_2</field>
+                    </block>
+                  </value>
+                  <value name="ADD2">
+                    <block type="text" id="*RL~-$]iUMqAv8P9cSuE">
+                      <field name="TEXT">shadows_type_3</field>
+                    </block>
+                  </value>
+                  <value name="ADD3">
+                    <block type="text" id="~}}~p7weKTn=@^!NVZ?=">
+                      <field name="TEXT">shadows_type_4</field>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <next>
+                <block type="setHTMLElemStyle" id="Oj.L*/,lIR^EwfZ(J{T9">
+                  <field name="PROPERTY">border</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <block type="text" id="NA6n9QB[V![mhs|x3#+W">
+                      <field name="TEXT">1px solid red</field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text" id="yOP%82Gka9FVz@ROab/J">
+                      <field name="TEXT"></field>
+                    </shadow>
+                    <block type="text" id="rD?imFD]iXXm~xm9(X*M">
+                      <field name="TEXT">shadows_type_1</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+      <next>
+        <block type="eventHTMLElem" id="+vRl?4lFbE~Os)lFp/*t">
+          <field name="EVENT">click</field>
+          <field name="PARENT">FALSE</field>
+          <value name="ID">
+            <shadow type="text" id="#,i4Gf0Qs!6{fl#yRGe=">
+              <field name="TEXT">shadows_type_2</field>
+            </shadow>
+          </value>
+          <statement name="DO">
+            <block type="setLightParam" id="ut)fW*mwC?k/9RGQ~RrJ">
+              <field name="TYPE">SHADOW_MAP_FILTERING</field>
+              <value name="SHADOW_MAP_FILTERING">
+                <shadow type="shadowMapFilteringTypeDropdown" id="kGQjh0am*NYRkhXIn/Ss">
+                  <field name="TEXT">BILINEAR</field>
+                </shadow>
+              </value>
+              <value name="OBJECT">
+                <shadow type="objectList" id=":Z|;4gU{(pJKcW=#LOY~">
+                  <field name="FIELDNAME">&lt;none&gt;</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="setHTMLElemStyle" id=";;:KC0pVol1rQm8G7NE,">
+                  <field name="PROPERTY">border</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <block type="text" id=".goqi$=7trynwjWszfF#">
+                      <field name="TEXT">none</field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text" id=".QqWbb67U-Z[Mo{l+]lM">
+                      <field name="TEXT"></field>
+                    </shadow>
+                    <block type="lists_create_with" id="d-E#^N~3!|$9]uW|CGF{">
+                      <mutation items="4"></mutation>
+                      <value name="ADD0">
+                        <block type="text" id="pSe]b,-=$];eoX`l[dzz">
+                          <field name="TEXT">shadows_type_1</field>
+                        </block>
+                      </value>
+                      <value name="ADD1">
+                        <block type="text" id="T}i8K6=;JI++[*Mhri?N">
+                          <field name="TEXT">shadows_type_2</field>
+                        </block>
+                      </value>
+                      <value name="ADD2">
+                        <block type="text" id="y_+D*uT0oM}{X7MqG#jr">
+                          <field name="TEXT">shadows_type_3</field>
+                        </block>
+                      </value>
+                      <value name="ADD3">
+                        <block type="text" id="oH0)P`[GR=sp83kwkQ_R">
+                          <field name="TEXT">shadows_type_4</field>
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="setHTMLElemStyle" id="!i10$4AqQ(VPibUA+/w]">
+                      <field name="PROPERTY">border</field>
+                      <field name="PARENT">FALSE</field>
+                      <value name="VALUE">
+                        <block type="text" id="O1-SPToR5GYmdf9XJ.aA">
+                          <field name="TEXT">1px solid red</field>
+                        </block>
+                      </value>
+                      <value name="ID">
+                        <shadow type="text" id="k%OOd|VZ!-*jztiEB]Zg">
+                          <field name="TEXT"></field>
+                        </shadow>
+                        <block type="text" id="!4yQ!`a7C5Zmw=s]cSh9">
+                          <field name="TEXT">shadows_type_2</field>
+                        </block>
+                      </value>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </statement>
+          <next>
+            <block type="eventHTMLElem" id="F/?VHt$F$Vei3#[=023B">
+              <field name="EVENT">click</field>
+              <field name="PARENT">FALSE</field>
+              <value name="ID">
+                <shadow type="text" id="e9Dk)NJT!PUTC|5px*^Z">
+                  <field name="TEXT">shadows_type_3</field>
+                </shadow>
+              </value>
+              <statement name="DO">
+                <block type="setLightParam" id="b_@Nqg?~@jWf,#u|$-yF">
+                  <field name="TYPE">SHADOW_MAP_FILTERING</field>
+                  <value name="SHADOW_MAP_FILTERING">
+                    <shadow type="shadowMapFilteringTypeDropdown" id="/o/I[{+~yO8L95@)UQ-N">
+                      <field name="TEXT">PCF</field>
+                    </shadow>
+                  </value>
+                  <value name="OBJECT">
+                    <shadow type="objectList" id="1OBF)1+jC:c3!JU06nhS">
+                      <field name="FIELDNAME">&lt;none&gt;</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="setHTMLElemStyle" id="BnJl+Y=+(T)K2pr{WA2v">
+                      <field name="PROPERTY">border</field>
+                      <field name="PARENT">FALSE</field>
+                      <value name="VALUE">
+                        <block type="text" id="N[NRv*]:-hHS%jZ8D5i/">
+                          <field name="TEXT">none</field>
+                        </block>
+                      </value>
+                      <value name="ID">
+                        <shadow type="text" id=";D)Vq0%2{.PT:g6~I;2x">
+                          <field name="TEXT"></field>
+                        </shadow>
+                        <block type="lists_create_with" id="}E8s2X8I2FKLZDdA#}Ht">
+                          <mutation items="4"></mutation>
+                          <value name="ADD0">
+                            <block type="text" id="MaYgq{L/,Vbcrge70^ti">
+                              <field name="TEXT">shadows_type_1</field>
+                            </block>
+                          </value>
+                          <value name="ADD1">
+                            <block type="text" id="8b%:u}tJtY$:w$d[Qe~D">
+                              <field name="TEXT">shadows_type_2</field>
+                            </block>
+                          </value>
+                          <value name="ADD2">
+                            <block type="text" id="1tKRUFFy$yiy_I!?ffQX">
+                              <field name="TEXT">shadows_type_3</field>
+                            </block>
+                          </value>
+                          <value name="ADD3">
+                            <block type="text" id="d2*R]},kB!-~vl?xSfp_">
+                              <field name="TEXT">shadows_type_4</field>
+                            </block>
+                          </value>
+                        </block>
+                      </value>
+                      <next>
+                        <block type="setHTMLElemStyle" id="EPihIzCl$ZQD0nsE?{5L">
+                          <field name="PROPERTY">border</field>
+                          <field name="PARENT">FALSE</field>
+                          <value name="VALUE">
+                            <block type="text" id="f=cbT#%~mZ#]6^2DS6R#">
+                              <field name="TEXT">1px solid red</field>
+                            </block>
+                          </value>
+                          <value name="ID">
+                            <shadow type="text" id="}3|Pq//pk/;m##$XYI1K">
+                              <field name="TEXT"></field>
+                            </shadow>
+                            <block type="text" id="w)9.[u%i@ck7@n!E=Ov+">
+                              <field name="TEXT">shadows_type_3</field>
+                            </block>
+                          </value>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </statement>
+              <next>
+                <block type="eventHTMLElem" id="x64*!r[n1Q!+c.@;9nkw">
+                  <field name="EVENT">click</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="ID">
+                    <shadow type="text" id="z6b1BCs=4~5A7QU^v)i=">
+                      <field name="TEXT">shadows_type_4</field>
+                    </shadow>
+                  </value>
+                  <statement name="DO">
+                    <block type="setLightParam" id="~U]7+9)|`bbbn%S8~1Om">
+                      <field name="TYPE">SHADOW_MAP_FILTERING</field>
+                      <value name="SHADOW_MAP_FILTERING">
+                        <shadow type="shadowMapFilteringTypeDropdown" id="WK2%6(i`oZERzJk|vq#m">
+                          <field name="TEXT">ESM</field>
+                        </shadow>
+                      </value>
+                      <value name="OBJECT">
+                        <shadow type="objectList" id="wlLGIybRo|A{Kg]QGSUT">
+                          <field name="FIELDNAME">&lt;none&gt;</field>
+                        </shadow>
+                      </value>
+                      <next>
+                        <block type="setHTMLElemStyle" id="7%D88JDBb6Yo@e4-ok1+">
+                          <field name="PROPERTY">border</field>
+                          <field name="PARENT">FALSE</field>
+                          <value name="VALUE">
+                            <block type="text" id="xQOUnJIo,Wx]ONJ-6lbF">
+                              <field name="TEXT">none</field>
+                            </block>
+                          </value>
+                          <value name="ID">
+                            <shadow type="text" id="g|F/Uh_lP$lze8,htMm:">
+                              <field name="TEXT"></field>
+                            </shadow>
+                            <block type="lists_create_with" id="x2VM!14an.RJ]%t{_=9~">
+                              <mutation items="4"></mutation>
+                              <value name="ADD0">
+                                <block type="text" id="BvHC(}%(|=wkw.K4W*K,">
+                                  <field name="TEXT">shadows_type_1</field>
+                                </block>
+                              </value>
+                              <value name="ADD1">
+                                <block type="text" id=",30M)7-?p$/0?2*Fww*1">
+                                  <field name="TEXT">shadows_type_2</field>
+                                </block>
+                              </value>
+                              <value name="ADD2">
+                                <block type="text" id="k6=lP/g~H1+v~:.{E@tl">
+                                  <field name="TEXT">shadows_type_3</field>
+                                </block>
+                              </value>
+                              <value name="ADD3">
+                                <block type="text" id="?Lk/dwMAxRLrcZeF=*4Q">
+                                  <field name="TEXT">shadows_type_4</field>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                          <next>
+                            <block type="setHTMLElemStyle" id="bD$Noi`PB%PxxtraXu-;">
+                              <field name="PROPERTY">border</field>
+                              <field name="PARENT">FALSE</field>
+                              <value name="VALUE">
+                                <block type="text" id="06g#PcI/QB8mm^ndk21w">
+                                  <field name="TEXT">1px solid red</field>
+                                </block>
+                              </value>
+                              <value name="ID">
+                                <shadow type="text" id="CiS%#Ro`B8rys:,:-;9U">
+                                  <field name="TEXT"></field>
+                                </shadow>
+                                <block type="text" id="Eg0,.SM(?uHi+_P]4@*[">
+                                  <field name="TEXT">shadows_type_4</field>
+                                </block>
+                              </value>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </statement>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="addHTMLElement" id="gi_uX:%h4ZEL;%.8fHbR" x="-870" y="1490">
+      <field name="ELEMENT">div</field>
+      <field name="MODE">TO</field>
+      <field name="PARENT">FALSE</field>
+      <value name="ID">
+        <shadow type="text" id="vWN5}~gaO2dBDMi,ymK-">
+          <field name="TEXT">sun_icon</field>
+        </shadow>
+      </value>
+      <value name="TARGET_ID">
+        <shadow type="DOMObjectSelector" id="8A20@/JU-)5vxrVb2XX7">
+          <field name="DOM_OBJECT">CONTAINER</field>
+        </shadow>
+        <block type="text" id="_9@3F~KHlO1/S@yJI}MR">
+          <field name="TEXT">menu</field>
+        </block>
+      </value>
+      <next>
+        <block type="setHTMLElemAttribute" id="vX;i-~[sY5:(]c@o9_SO">
+          <field name="ATTRIBUTE">className</field>
+          <field name="PARENT">FALSE</field>
+          <value name="VALUE">
+            <block type="text" id="qFEO5sBO=,Z,xO.8e@:b">
+              <field name="TEXT">light_icon</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text" id="E4v-tWdjCRkJ-9Hz2YrB">
+              <field name="TEXT">sun_icon</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemStyle" id="C?;!z1;1y/kfTUg:Fv$Y">
+              <field name="PROPERTY">backgroundImage</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="text" id="zQ940Msu?ako+*r,uWCF">
+                  <field name="TEXT">url('./icons/sun.svg')</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="Eb14TNSvW%aVT=MP-MDL">
+                  <field name="TEXT"></field>
+                </shadow>
+                <block type="text" id="-[UHNi0/,)M=jU[{Ion(">
+                  <field name="TEXT">sun_icon</field>
+                </block>
+              </value>
+              <next>
+                <block type="eventHTMLElem" id="DH1}fw5PSGom9XuL}$)9">
+                  <field name="EVENT">click</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="ID">
+                    <shadow type="text" id="TC4AkdVJ,_@/vq)%MbC4">
+                      <field name="TEXT"></field>
+                    </shadow>
+                    <block type="text" id="S:uHEl]gG5LY^mg$Td2i">
+                      <field name="TEXT">sun_icon</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="loadScene" id="[#41_0.CE/rMN+psUSJV">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" enableonprogress="false" enableonerror="false" enablealias="false"></mutation>
+                      <value name="URL">
+                        <shadow type="text" id="pmONo40GpVRy!$9=FL?M">
+                          <field name="TEXT">./sun.gltf.xz</field>
+                        </shadow>
+                      </value>
+                      <statement name="DO">
+                        <block type="setHTMLElemStyle" id="d`?!FciLuj:B=u4X11ym">
+                          <field name="PROPERTY">display</field>
+                          <field name="PARENT">FALSE</field>
+                          <value name="VALUE">
+                            <block type="text" id=":!:J.W}n-]m0FMkf*x~C">
+                              <field name="TEXT">none</field>
+                            </block>
+                          </value>
+                          <value name="ID">
+                            <shadow type="text" id="2@@[80~{5eWu2;wE+.Q!">
+                              <field name="TEXT">background</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </statement>
+                    </block>
+                  </statement>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1134" viewport-y="28" viewport-w="768" viewport-h="484.5" viewport-hidden="true" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>

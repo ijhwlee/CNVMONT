@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CNVMONT VEGA3D</title>
+  <style>
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0px;
+    }
+
+    .grid-item {
+    background-color: #ffffff;
+    color: white;
+    padding: 0px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 0px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Vega 3d Samples</h1>
+    <ul>
+    <% for (let i = 0; i < vega3dList.length; i++) { %>
+        <li><a href=<%= vega3dList[i] %> target="_blank"><%= folderList[i] %></a></li>
+    <% } %>
+    </ul>
+</body>

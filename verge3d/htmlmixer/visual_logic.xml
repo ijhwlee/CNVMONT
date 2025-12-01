@@ -1,0 +1,38 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="Init" type="InitTab" active="false" scrollx="19.999999999999773" scrolly="0" scale="0.9"></tab>
+  <tab name="New Tab" type="CommonTab" active="true" scrollx="-46.444442417003415" scrolly="-7.111110457225891" scale="1">
+    <block xmlns="https://developers.google.com/blockly/xml" type="createObject" id="{,-RivO]g$h/OJ^dbML7" x="10" y="190">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" object_type="PLANE_WITH_HTML"></mutation>
+      <field name="TYPE">PLANE_WITH_HTML</field>
+      <field name="CAMERA_TYPE">PERSPECTIVE</field>
+      <field name="CAMERA_CONTROLS_TYPE">ORBIT</field>
+      <field name="LIGHT_TYPE">AMBIENT</field>
+      <value name="NAME">
+        <shadow type="text" id="teT81p7mstX$IOi$Hd_{">
+          <field name="TEXT">myObj</field>
+        </shadow>
+      </value>
+      <value name="WIDTH">
+        <shadow type="math_number" id="sv1#ea28tYZuYG3xc3-Y">
+          <field name="NUM">5.7</field>
+        </shadow>
+      </value>
+      <value name="HEIGHT">
+        <shadow type="math_number" id="DOtQvhC2r2cWyDO2yU{6">
+          <field name="NUM">3.7</field>
+        </shadow>
+      </value>
+      <value name="URL">
+        <shadow type="text" id="p,k.)4i)hna_91dapvaY">
+          <field name="TEXT">https://www.soft8soft.com</field>
+        </shadow>
+      </value>
+      <value name="RESOLUTION">
+        <shadow type="math_number" id="t*`]#8XS}hlWmAhVjm_8">
+          <field name="NUM">1280</field>
+        </shadow>
+      </value>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1102.8" viewport-y="37" viewport-w="747.2" viewport-h="480.5" viewport-hidden="false" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>

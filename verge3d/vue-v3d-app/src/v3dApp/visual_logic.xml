@@ -1,0 +1,13 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="20.142822265625227" scrolly="0" scale="0.9"></tab>
+  <tab name="main" type="CommonTab" active="true" scrollx="11.35616912841806" scrolly="-442.6713920593261" scale="0.9">
+    <block xmlns="https://developers.google.com/blockly/xml" type="console.log" id="7`Qa{t$EpOJ!+Kz}nz!l" x="388" y="757">
+      <value name="VALUE">
+        <shadow type="text" id="6_5{^(zKNUxXYyck0HLc">
+          <field name="TEXT">This is a Vue app!</field>
+        </shadow>
+      </value>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1299" viewport-y="28" viewport-w="878" viewport-h="546" viewport-hidden="false" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>

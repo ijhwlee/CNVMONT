@@ -1,0 +1,12 @@
+{
+    "appDescription": "Arcade Racing demo made with Verge3D. Features advanced vehicle simulation, collision detection, immersive sounds, and more.", 
+    "appID": "com.soft8soft.arcaderacing", 
+    "appName": "Arcade Racing", 
+    "appVersion": "1.0.0", 
+    "authorEmail": "info@soft8soft.com", 
+    "authorName": "Soft8Soft OÜ", 
+    "authorWebsite": "https://www.soft8soft.com", 
+    "showFullscreen": "false", 
+    "targetPlatform": "win32-x64", 
+    "templateName": "cordova"
+}

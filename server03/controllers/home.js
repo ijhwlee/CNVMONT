@@ -16,7 +16,7 @@ async function listFiles(modelPath) {
     console.error(`Error reading directory(${modelPath}):`, err);
     return [];
   }
-}
+};
 
 const showHome =  (req, res) => {
     const modelPath = path.join(__dirname, '../public/model');
@@ -31,6 +31,25 @@ const showHome =  (req, res) => {
                 files[index] = '/3dmodels/'+name;
             })
             res.render("index", {modelList: files});
+        }
+    })
+};
+
+const showVega3d =  (req, res) => {
+    const modelPath = path.join(__dirname, '../public/vega3d');
+    fs.readdir(modelPath, (err, files) => {
+        console.log(`files = ${files}`);
+        if(err) {
+            console.err('Error reading directory: ', err);
+            return;
+        }
+        else {
+            let links = [];
+            files.forEach((file, index, files) => { // assuming list of directories
+                const name = file;
+                links[index] = '/vega3d/'+name;
+            })
+            res.render("vega3d", {vega3dList: links, folderList: files});
         }
     })
 };
@@ -88,4 +107,4 @@ const showThree =  (req, res) => {
     })
 };
 
-module.exports = {showHome, showThree, showSkinning, showEditing};
+module.exports = {showHome, showThree, showSkinning, showEditing, showVega3d};
