@@ -2,9 +2,9 @@ node_modules
 build
 dist
 security
-public/lib
-public/model
-public/vega3d
+model
+vega3d
+skinning
 npm-debug.log
 .env
 .DS_Store
