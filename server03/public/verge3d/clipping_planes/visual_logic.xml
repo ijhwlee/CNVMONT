@@ -1,0 +1,100 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="875" scrolly="0" scale="0.9"></tab>
+  <tab name="main" type="CommonTab" active="true" scrollx="772.1616937720813" scrolly="263.3754598118546" scale="0.6768393620286867">
+    <block xmlns="https://developers.google.com/blockly/xml" type="whenDraggedOver" id=",M}aOcHprePY@Mj@wWx/" x="-770" y="-130">
+      <field name="X_RAY">FALSE</field>
+      <field name="LEFT_BUTTON">TRUE</field>
+      <field name="MIDDLE_BUTTON">TRUE</field>
+      <field name="RIGHT_BUTTON">TRUE</field>
+      <value name="VALUE">
+        <shadow type="objectList" id="F-*c4?ih8PTP=SH39Q/g">
+          <field name="FIELDNAME">minus</field>
+        </shadow>
+      </value>
+      <statement name="DO_MOVE">
+        <block type="dragMoveAdv" id="A+x|=B1LVP({d`u3zd/K">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" enablespace="false"></mutation>
+          <field name="MODE">X</field>
+          <field name="SPACE_TYPE">WORLD</field>
+          <value name="TARGETOBJ">
+            <shadow type="objectList" id="eL14Rl$D0PdATlpJH2el">
+              <field name="FIELDNAME">ClippingPlane</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="dragMoveAdv" id="fBF(9DRX/(We~:h70.ST">
+              <mutation xmlns="http://www.w3.org/1999/xhtml" enablespace="false"></mutation>
+              <field name="MODE">X</field>
+              <field name="SPACE_TYPE">WORLD</field>
+              <value name="TARGETOBJ">
+                <shadow type="objectList" id="4A$qfa:X4oe;?0=ioz*Q">
+                  <field name="FIELDNAME">minus</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="dragMoveAdv" id="TzMiLIZ4-0o(DjbeHAp8">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" enablespace="false"></mutation>
+                  <field name="MODE">X</field>
+                  <field name="SPACE_TYPE">WORLD</field>
+                  <value name="TARGETOBJ">
+                    <shadow type="objectList" id="H5*pSjmuM5M%4]nF#7v@">
+                      <field name="FIELDNAME">plus</field>
+                    </shadow>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="whenDraggedOver" id=";pN@4_degJ5]+!bs~3c7" x="-790" y="150">
+      <field name="X_RAY">FALSE</field>
+      <field name="LEFT_BUTTON">TRUE</field>
+      <field name="MIDDLE_BUTTON">TRUE</field>
+      <field name="RIGHT_BUTTON">TRUE</field>
+      <value name="VALUE">
+        <shadow type="objectList" id="BT{yOy)N/rCL.^+tyI2m">
+          <field name="FIELDNAME">plus</field>
+        </shadow>
+      </value>
+      <statement name="DO_MOVE">
+        <block type="dragMoveAdv" id="*^Iy+Sa;|8mpys`r=YFu">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" enablespace="false"></mutation>
+          <field name="MODE">X</field>
+          <field name="SPACE_TYPE">WORLD</field>
+          <value name="TARGETOBJ">
+            <shadow type="objectList" id="oN@sF#0@YG~N-TBqKARH">
+              <field name="FIELDNAME">ClippingPlane</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="dragMoveAdv" id=",bLWHpLG}%_VQR=?u?EU">
+              <mutation xmlns="http://www.w3.org/1999/xhtml" enablespace="false"></mutation>
+              <field name="MODE">X</field>
+              <field name="SPACE_TYPE">WORLD</field>
+              <value name="TARGETOBJ">
+                <shadow type="objectList" id="C^h$GAJgJn(=Eo%*wiMT">
+                  <field name="FIELDNAME">minus</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="dragMoveAdv" id="bcAkPOJu,ig:{#sy!G^g">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" enablespace="false"></mutation>
+                  <field name="MODE">X</field>
+                  <field name="SPACE_TYPE">WORLD</field>
+                  <value name="TARGETOBJ">
+                    <shadow type="objectList" id="Pd?}m[9giLh(c9`p_)|u">
+                      <field name="FIELDNAME">plus</field>
+                    </shadow>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1134" viewport-y="28" viewport-w="768" viewport-h="484.5" viewport-hidden="false" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>

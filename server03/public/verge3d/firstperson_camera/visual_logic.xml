@@ -1,0 +1,816 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="134.4444580078125" scrolly="-99" scale="0.9">
+    <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id="(aj4SdU~KjpylTs5$.Zm" x="150" y="110">
+      <field name="LOAD_COMP_ASSETS">TRUE</field>
+      <field name="FULLSCREEN">TRUE</field>
+      <field name="BKG_TRANSPARENCY">FALSE</field>
+      <field name="PRESERVE_DRAW_BUF">FALSE</field>
+      <field name="FADE_ANNOTATIONS">TRUE</field>
+    </block>
+  </tab>
+  <tab name="main" type="CommonTab" active="true" scrollx="160.22179638545458" scrolly="-429.12828572801493" scale="0.6260121018585127">
+    <variables xmlns="https://developers.google.com/blockly/xml">
+      <variable id="f6Q.EB4(Vq5M085%wpI)">map half size x</variable>
+      <variable id="r2$Lw6}$E2+.JHmi01L^">change</variable>
+      <variable id="a]tQx],:):4a[Z;wh/Zk">map half size y</variable>
+      <variable id="$;hl+QW_$=X.oRo=t$it">cursor x</variable>
+      <variable id="A-kt8RP#iRS#ViJ:pQXz">footsteps</variable>
+      <variable id="Q_c%7TUA#B{N/`Q5L6jT">cursor y</variable>
+      <variable id="u?*zjOfqJFDN]#AQY=[@">distance</variable>
+      <variable id="_AX2-eLD3MM%Zx0u9|`*">sounds</variable>
+      <variable id="Z0r/iL;F/Lro8a_2T!-F">footsteps_sound</variable>
+    </variables>
+    <block xmlns="https://developers.google.com/blockly/xml" type="batchGeometry" id="qH:p%SF28fT5V6~(|P=-" x="110" y="110">
+      <value name="TARGET">
+        <shadow type="allObjectList" id="IAKqOy[AEoDnw.Gq6brQ"></shadow>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="variables_set" id="/9|k9Ucl$2;nh?_ojGo^" x="110" y="190">
+      <field name="VAR" id="f6Q.EB4(Vq5M085%wpI)">map half size x</field>
+      <value name="VALUE">
+        <block type="math_arithmetic" id="V7k^o-uP=Omv*7^=Rt%,">
+          <field name="OP">DIVIDE</field>
+          <value name="A">
+            <shadow type="math_number" id="i`V[pfovOTBo1m]^?5`P">
+              <field name="NUM">2</field>
+            </shadow>
+            <block type="getObjectDimension" id="$1,J.6e2u]1vTSsIm;Lt">
+              <field name="COORD">X</field>
+              <field name="WORLD_SPACE">FALSE</field>
+              <value name="TARGETOBJ">
+                <shadow type="objectList" id="1P]Xv2`TaebRv`V,WMTU">
+                  <field name="FIELDNAME">map</field>
+                </shadow>
+              </value>
+            </block>
+          </value>
+          <value name="B">
+            <shadow type="math_number" id="MoeYbxZMsQo:cMESJan(">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+      <next>
+        <block type="variables_set" id="=vBh0|66LMQ0~uyb^Q^o">
+          <field name="VAR" id="a]tQx],:):4a[Z;wh/Zk">map half size y</field>
+          <value name="VALUE">
+            <block type="math_arithmetic" id="CTBpHYn#LC+o?}gm*x`!">
+              <field name="OP">DIVIDE</field>
+              <value name="A">
+                <shadow type="math_number" id="i`V[pfovOTBo1m]^?5`P">
+                  <field name="NUM">2</field>
+                </shadow>
+                <block type="getObjectDimension" id="EKjk8AR9+f_KJVN91T%=">
+                  <field name="COORD">Y</field>
+                  <field name="WORLD_SPACE">FALSE</field>
+                  <value name="TARGETOBJ">
+                    <shadow type="objectList" id="Rk@cf`~7#R!h_ESw=maB">
+                      <field name="FIELDNAME">map</field>
+                    </shadow>
+                  </value>
+                </block>
+              </value>
+              <value name="B">
+                <shadow type="math_number" id="hWbIsJP)EvxE$U_(Xt|M">
+                  <field name="NUM">2</field>
+                </shadow>
+              </value>
+            </block>
+          </value>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="?A9^ewUwiTls|8vCw+Bt" x="110" y="330">
+      <field name="NAME">update map</field>
+      <comment pinned="false" h="80" w="160">Describe this function...</comment>
+      <statement name="STACK">
+        <block type="variables_set" id="/R0sx`f2]g|=#nS(4-t0">
+          <field name="VAR" id="$;hl+QW_$=X.oRo=t$it">cursor x</field>
+          <value name="VALUE">
+            <block type="mapRange" id="iXQ)8j!c.sQepey.y2$z">
+              <value name="VALUE">
+                <block type="getObjTransform" id="ULr+k7)]y3v5h;J7[A-Y">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" useworldspace="false"></mutation>
+                  <field name="MODE">position</field>
+                  <field name="COORD">x</field>
+                  <value name="TARGETOBJ">
+                    <shadow type="objectList" id="3E8B-.`::;G}:B(eTo%+">
+                      <field name="FIELDNAME">Camera</field>
+                    </shadow>
+                  </value>
+                </block>
+              </value>
+              <value name="FROM_MIN">
+                <shadow type="math_number" id="We:PyQ]}HV}_!j#oq5ME">
+                  <field name="NUM">0</field>
+                </shadow>
+                <block type="math_number" id="]R-GHInbX8VYA[BbTd:%">
+                  <field name="NUM">-20</field>
+                </block>
+              </value>
+              <value name="FROM_MAX">
+                <shadow type="math_number" id="rT{Azl%!A6O0aEblCM_6">
+                  <field name="NUM">1</field>
+                </shadow>
+                <block type="math_number" id="liW:U]=]o`pq`)-!1Q#J">
+                  <field name="NUM">20</field>
+                </block>
+              </value>
+              <value name="TO_MIN">
+                <shadow type="math_number" id="RIGC%;i)Ty0!xmPtx:4^">
+                  <field name="NUM">0</field>
+                </shadow>
+                <block type="math_single" id="XUpCsu2NJMYyiA_qFx)9">
+                  <field name="OP">NEG</field>
+                  <value name="NUM">
+                    <shadow type="math_number" id="tGc:v`:C}3lxUJ3s~-j@">
+                      <field name="NUM">4</field>
+                    </shadow>
+                    <block type="variables_get" id="Fg~Ly@A,3NX4bBEmPZPB">
+                      <field name="VAR" id="f6Q.EB4(Vq5M085%wpI)">map half size x</field>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <value name="TO_MAX">
+                <shadow type="math_number" id="nm#j)]8:nDA~3D*7e*69">
+                  <field name="NUM">1</field>
+                </shadow>
+                <block type="variables_get" id="V4~/un~$S+0fvX_Xsrj5">
+                  <field name="VAR" id="f6Q.EB4(Vq5M085%wpI)">map half size x</field>
+                </block>
+              </value>
+            </block>
+          </value>
+          <next>
+            <block type="variables_set" id="45S+@}*jeXs`0?o~|F6D">
+              <field name="VAR" id="Q_c%7TUA#B{N/`Q5L6jT">cursor y</field>
+              <value name="VALUE">
+                <block type="mapRange" id="OI8/j,xN6=$MII=8fM@j">
+                  <value name="VALUE">
+                    <block type="getObjTransform" id="L_dB%x*U}DMRGp`2Xz@#">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" useworldspace="false"></mutation>
+                      <field name="MODE">position</field>
+                      <field name="COORD">y</field>
+                      <value name="TARGETOBJ">
+                        <shadow type="objectList" id="L,PR02l_%#/{^t8]Gi?D">
+                          <field name="FIELDNAME">Camera</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="FROM_MIN">
+                    <shadow type="math_number" id="Q;RTy}+x@O,pPj_Tc)zI">
+                      <field name="NUM">0</field>
+                    </shadow>
+                    <block type="math_number" id="Z!SU/j%VV,io!X;:K:.s">
+                      <field name="NUM">-25</field>
+                    </block>
+                  </value>
+                  <value name="FROM_MAX">
+                    <shadow type="math_number" id="6am%Q(4!Et!:S|0bf+[_">
+                      <field name="NUM">1</field>
+                    </shadow>
+                    <block type="math_number" id="Wfz1Jdh(+`%L1!]rzz0N">
+                      <field name="NUM">22</field>
+                    </block>
+                  </value>
+                  <value name="TO_MIN">
+                    <shadow type="math_number" id=";kB(2ZDAm?7e8pOx$Er#">
+                      <field name="NUM">0</field>
+                    </shadow>
+                    <block type="math_single" id="C6U(q(IO7BF:TU,=tt;v">
+                      <field name="OP">NEG</field>
+                      <value name="NUM">
+                        <shadow type="math_number" id="tGc:v`:C}3lxUJ3s~-j@">
+                          <field name="NUM">4</field>
+                        </shadow>
+                        <block type="variables_get" id="PVe#e!kVH]=7A(]x0b{3">
+                          <field name="VAR" id="a]tQx],:):4a[Z;wh/Zk">map half size y</field>
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="TO_MAX">
+                    <shadow type="math_number" id="THO^]A[p7+P:}D2pM,GI">
+                      <field name="NUM">1</field>
+                    </shadow>
+                    <block type="variables_get" id="A[$/RI*_lYeuKPdJjH)~">
+                      <field name="VAR" id="a]tQx],:):4a[Z;wh/Zk">map half size y</field>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <next>
+                <block type="setObjTransform" id="Sbw9,^7HWWhbeo[5m~|9">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" usevectorslot="false" useworldspace="false"></mutation>
+                  <field name="MODE">position</field>
+                  <field name="OFFSET">FALSE</field>
+                  <value name="TARGETOBJ">
+                    <shadow type="objectList" id="eB8f9@ap_h^jKZ3^)fXf">
+                      <field name="FIELDNAME">cursor</field>
+                    </shadow>
+                  </value>
+                  <value name="X">
+                    <block type="variables_get" id="^T|6*1GjMXEALG)y0c?P">
+                      <field name="VAR" id="$;hl+QW_$=X.oRo=t$it">cursor x</field>
+                    </block>
+                  </value>
+                  <value name="Y">
+                    <block type="variables_get" id="[/oa*jH%i0f;!9/]We|H">
+                      <field name="VAR" id="Q_c%7TUA#B{N/`Q5L6jT">cursor y</field>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="setObjTransform" id="X(B|1Uk6XJSnl$.C@fPB">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" usevectorslot="false" useworldspace="false"></mutation>
+                      <field name="MODE">rotation</field>
+                      <field name="OFFSET">FALSE</field>
+                      <value name="TARGETOBJ">
+                        <shadow type="objectList" id="{7v6KnN/wM*r10SHV]NW">
+                          <field name="FIELDNAME">cursor</field>
+                        </shadow>
+                      </value>
+                      <value name="Z">
+                        <block type="getObjTransform" id="Q_WV?A^#S59#_q|O.r`Z">
+                          <mutation xmlns="http://www.w3.org/1999/xhtml" useworldspace="false"></mutation>
+                          <field name="MODE">rotation</field>
+                          <field name="COORD">z</field>
+                          <value name="TARGETOBJ">
+                            <shadow type="objectList" id="!%xf@L^IA`UqwXm=gL`!">
+                              <field name="FIELDNAME">Camera</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </value>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_callnoreturn" id=",Lm|0KZ]NYL@z[MrtpnL" x="110" y="650">
+      <mutation name="update map"></mutation>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="whenMoved" id="]PFHl;z,Z5}mX/2Uh1#f" x="110" y="710">
+      <value name="OBJECT">
+        <shadow type="objectList" id="|2#l5bvK]orVfmo+^@WT">
+          <field name="FIELDNAME">Camera</field>
+        </shadow>
+      </value>
+      <value name="DELTA">
+        <shadow type="math_number" id="S?IxU2`r+j_)=U[^hf@G">
+          <field name="NUM">0.01</field>
+        </shadow>
+      </value>
+      <statement name="DO_MOVE">
+        <block type="procedures_callnoreturn" id="l{6=0ea5gG?!bHWfZvYT">
+          <mutation name="update map"></mutation>
+          <next>
+            <block type="variables_set" id="{AGXtKca]OzA2d2=ZQEJ">
+              <field name="VAR" id="u?*zjOfqJFDN]#AQY=[@">distance</field>
+              <value name="VALUE">
+                <block type="distanceBetweenObjects" id="}b6nZ[/G)kPKD4txsCRz">
+                  <value name="OBJECT1">
+                    <shadow type="objectList" id="j5eFIxQRbKMwk/7XU~7V">
+                      <field name="FIELDNAME">Camera</field>
+                    </shadow>
+                  </value>
+                  <value name="OBJECT2">
+                    <shadow type="objectList" id="[7=cRto[8el;|`55-$U`">
+                      <field name="FIELDNAME">ReflectionCubemap.001</field>
+                    </shadow>
+                  </value>
+                </block>
+              </value>
+              <next>
+                <block type="volume" id="?IqkEz;hP]v}IlRP!~H+">
+                  <value name="VALUE">
+                    <block type="loadSoundAdv" id="}]!?^I0d:;0pn{l-#2Xy">
+                      <field name="TYPE">MUSIC</field>
+                      <value name="URL">
+                        <shadow type="text" id="F.U~1rqVuFnK3Xc76LK.">
+                          <field name="TEXT">sounds/env_sound.mp3</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="VOLUME">
+                    <shadow type="math_number" id=")cts[yH=]X9m^cPN~~//">
+                      <field name="NUM">0.4</field>
+                    </shadow>
+                    <block type="math_constrain" id="bk`r%i.YfNm:@/whijsp" inline="false">
+                      <value name="VALUE">
+                        <block type="mapRange" id="u~7d9(f4YL;XJl4g,m0M" inline="false">
+                          <value name="VALUE">
+                            <block type="variables_get" id="hefr/Bl[~JKS?LI+WoFO">
+                              <field name="VAR" id="u?*zjOfqJFDN]#AQY=[@">distance</field>
+                            </block>
+                          </value>
+                          <value name="FROM_MIN">
+                            <shadow type="math_number" id="-$1FMgoWuFI991Oburr;">
+                              <field name="NUM">6.5</field>
+                            </shadow>
+                          </value>
+                          <value name="FROM_MAX">
+                            <shadow type="math_number" id="sRpKlCkdazKS)Md_SMT_">
+                              <field name="NUM">8</field>
+                            </shadow>
+                          </value>
+                          <value name="TO_MIN">
+                            <shadow type="math_number" id=":Sr5{_yFN}kh`kB1BQwr">
+                              <field name="NUM">0.2</field>
+                            </shadow>
+                          </value>
+                          <value name="TO_MAX">
+                            <shadow type="math_number" id="#J_7KcUJ.axNo7P:`gtt">
+                              <field name="NUM">0.4</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </value>
+                      <value name="LOW">
+                        <block type="math_number" id="gJy|HxI@p=@7IIqdNFU=">
+                          <field name="NUM">0.2</field>
+                        </block>
+                      </value>
+                      <value name="HIGH">
+                        <block type="math_number" id=":mo~T~1IKiQZA=sR02eS">
+                          <field name="NUM">0.4</field>
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="controls_if" id="-@$fZ;tc[P`4q`?uCMT0">
+                      <mutation else="1"></mutation>
+                      <value name="IF0">
+                        <block type="logic_compare" id="@k|grPi+Z+^v/Y2icNi`">
+                          <field name="OP">LTE</field>
+                          <value name="A">
+                            <block type="toFixedPoint" id=")S,vR(6QE?!seV:THAq4">
+                              <value name="VALUE">
+                                <block type="getObjTransform" id="(fO2rnBO7(-}m%pi/%RK">
+                                  <mutation xmlns="http://www.w3.org/1999/xhtml" useworldspace="false"></mutation>
+                                  <field name="MODE">position</field>
+                                  <field name="COORD">z</field>
+                                  <value name="TARGETOBJ">
+                                    <shadow type="objectList" id="4PnXnpsKA:Uq;6gw[ZS1">
+                                      <field name="FIELDNAME">Camera</field>
+                                    </shadow>
+                                  </value>
+                                </block>
+                              </value>
+                              <value name="PRECISION">
+                                <shadow type="math_number" id="Mye*GOh*~690wY8r84:9">
+                                  <field name="NUM">2</field>
+                                </shadow>
+                              </value>
+                            </block>
+                          </value>
+                          <value name="B">
+                            <block type="math_number" id="jaGZ+,8w8;JwG/!dI)1l">
+                              <field name="NUM">1.75</field>
+                            </block>
+                          </value>
+                        </block>
+                      </value>
+                      <statement name="DO0">
+                        <block type="controls_if" id="RVT$y^Z`6W3Ku!p^?eH(">
+                          <value name="IF0">
+                            <block type="logic_compare" id="THU(b05WeCI-XqtL|.n}">
+                              <field name="OP">NEQ</field>
+                              <value name="A">
+                                <block type="variables_get" id="7ps(+t|]PU8?7MmLF8OG">
+                                  <field name="VAR" id="Z0r/iL;F/Lro8a_2T!-F">footsteps_sound</field>
+                                </block>
+                              </value>
+                              <value name="B">
+                                <block type="loadSoundAdv" id="qg3+zSc3,i3sF:6!v(xR">
+                                  <field name="TYPE">SOUND</field>
+                                  <value name="URL">
+                                    <shadow type="text" id="Sk7hn@r}we-smkGtI$fG">
+                                      <field name="TEXT">sounds/footstep_ext.mp3</field>
+                                    </shadow>
+                                  </value>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                          <statement name="DO0">
+                            <block type="variables_set" id="WS8jHvZcz!Rc+O3JKWO1">
+                              <field name="VAR" id="Z0r/iL;F/Lro8a_2T!-F">footsteps_sound</field>
+                              <value name="VALUE">
+                                <block type="loadSoundAdv" id="mxO2IM[v^qJ72Ps9lC([">
+                                  <field name="TYPE">SOUND</field>
+                                  <value name="URL">
+                                    <shadow type="text" id="2kEwIYFI~FN.M4k}QLMo">
+                                      <field name="TEXT">sounds/footstep_ext.mp3</field>
+                                    </shadow>
+                                  </value>
+                                </block>
+                              </value>
+                              <next>
+                                <block type="variables_set" id="ya2R~i/e%d{L/MCRR9@h">
+                                  <field name="VAR" id="r2$Lw6}$E2+.JHmi01L^">change</field>
+                                  <value name="VALUE">
+                                    <block type="logic_boolean" id="1ipJc:9EVXjjl`u!l;L)">
+                                      <field name="BOOL">TRUE</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </next>
+                            </block>
+                          </statement>
+                        </block>
+                      </statement>
+                      <statement name="ELSE">
+                        <block type="controls_if" id="h$hQ8ic#dm1n^c^`~tNp">
+                          <value name="IF0">
+                            <block type="logic_compare" id="Pv-l+nIFuKrKh|wuWIOy">
+                              <field name="OP">NEQ</field>
+                              <value name="A">
+                                <block type="variables_get" id="jhLFNddtB79qcms}0+*W">
+                                  <field name="VAR" id="Z0r/iL;F/Lro8a_2T!-F">footsteps_sound</field>
+                                </block>
+                              </value>
+                              <value name="B">
+                                <block type="loadSoundAdv" id="RTHD=`pKi$D(^YymLlLx">
+                                  <field name="TYPE">SOUND</field>
+                                  <value name="URL">
+                                    <shadow type="text" id="sduME6+;nLO8SSSun#{o">
+                                      <field name="TEXT">sounds/footstep_int.mp3</field>
+                                    </shadow>
+                                  </value>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                          <statement name="DO0">
+                            <block type="variables_set" id="Mzwx|TzW@Rh)p}S.e+n8">
+                              <field name="VAR" id="Z0r/iL;F/Lro8a_2T!-F">footsteps_sound</field>
+                              <value name="VALUE">
+                                <block type="loadSoundAdv" id="}BnSp1[[G{668X=Ps#rX">
+                                  <field name="TYPE">SOUND</field>
+                                  <value name="URL">
+                                    <shadow type="text" id="RoW)8UB18;%vsojv]0_/">
+                                      <field name="TEXT">sounds/footstep_int.mp3</field>
+                                    </shadow>
+                                  </value>
+                                </block>
+                              </value>
+                              <next>
+                                <block type="variables_set" id="Zyag25l?%~(Mb|;Q-DG1">
+                                  <field name="VAR" id="r2$Lw6}$E2+.JHmi01L^">change</field>
+                                  <value name="VALUE">
+                                    <block type="logic_boolean" id="cCKqF?h]Em7gyd{Gpu[5">
+                                      <field name="BOOL">TRUE</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </next>
+                            </block>
+                          </statement>
+                        </block>
+                      </statement>
+                      <next>
+                        <block type="controls_if" id="d+I@vjK{!===B1baCrxz">
+                          <value name="IF0">
+                            <block type="logic_operation" id="IH2_;im!%wU+uE.h$`T?">
+                              <field name="OP">OR</field>
+                              <value name="A">
+                                <block type="logic_negate" id="4Sj3)1aL-oX4s5tQ~oH$">
+                                  <value name="BOOL">
+                                    <block type="variables_get" id="BI[()+/raEFhNi{db05T">
+                                      <field name="VAR" id="A-kt8RP#iRS#ViJ:pQXz">footsteps</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </value>
+                              <value name="B">
+                                <block type="variables_get" id="Zvv2/7vZvLci]`+6Zbl(">
+                                  <field name="VAR" id="r2$Lw6}$E2+.JHmi01L^">change</field>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                          <statement name="DO0">
+                            <block type="volume" id="E7uH1ta~2g5fEa##{Aio">
+                              <value name="VALUE">
+                                <block type="loadSoundAdv" id="((c:TRtHyukdO_*pkapM">
+                                  <field name="TYPE">SOUND</field>
+                                  <value name="URL">
+                                    <shadow type="text" id="c:{5R23f(Ev:~5Vp%K+8">
+                                      <field name="TEXT">sounds/footstep_ext.mp3</field>
+                                    </shadow>
+                                  </value>
+                                </block>
+                              </value>
+                              <value name="VOLUME">
+                                <shadow type="math_number" id="^*ihc:/m`Ux~z+4pkPdi">
+                                  <field name="NUM">0</field>
+                                </shadow>
+                              </value>
+                              <next>
+                                <block type="volume" id="/X11Ma^^a8/gx:4,:v#Y">
+                                  <value name="VALUE">
+                                    <block type="loadSoundAdv" id="u78r:?w+LtNI:9*CGa{5">
+                                      <field name="TYPE">SOUND</field>
+                                      <value name="URL">
+                                        <shadow type="text" id="yp5|Uq2a?ye{vpTEOth9">
+                                          <field name="TEXT">sounds/footstep_int.mp3</field>
+                                        </shadow>
+                                      </value>
+                                    </block>
+                                  </value>
+                                  <value name="VOLUME">
+                                    <shadow type="math_number" id="rMcaDL92lH:swCu.lBfu">
+                                      <field name="NUM">0</field>
+                                    </shadow>
+                                  </value>
+                                  <next>
+                                    <block type="volume" id="w.QC+S,FJBY(NLdFiGYN">
+                                      <value name="VALUE">
+                                        <block type="variables_get" id="#zC2uo+/UDYV^pvbQXWa">
+                                          <field name="VAR" id="Z0r/iL;F/Lro8a_2T!-F">footsteps_sound</field>
+                                        </block>
+                                      </value>
+                                      <value name="VOLUME">
+                                        <shadow type="math_number" id="y9]gGrPN^QEZdXuc=IDu">
+                                          <field name="NUM">0.2</field>
+                                        </shadow>
+                                      </value>
+                                      <next>
+                                        <block type="variables_set" id="r!k5{rM6$`~JPeWrxLP}">
+                                          <field name="VAR" id="A-kt8RP#iRS#ViJ:pQXz">footsteps</field>
+                                          <value name="VALUE">
+                                            <block type="logic_boolean" id="c=UKRCc]BpI2;,21u=fC">
+                                              <field name="BOOL">TRUE</field>
+                                            </block>
+                                          </value>
+                                          <next>
+                                            <block type="variables_set" id="nn]@PxiDF{Efr1kBG$L@">
+                                              <field name="VAR" id="r2$Lw6}$E2+.JHmi01L^">change</field>
+                                              <value name="VALUE">
+                                                <block type="logic_boolean" id="HBq9_XQ6Q`Y5YWR|`~C{">
+                                                  <field name="BOOL">FALSE</field>
+                                                </block>
+                                              </value>
+                                            </block>
+                                          </next>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </statement>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+      <statement name="DO_STOP">
+        <block type="volume" id="BL0Ah)0X!Y^8m.%bbZ+W">
+          <value name="VALUE">
+            <block type="loadSoundAdv" id="#H5).y:@vEP{9)W|/Jcg">
+              <field name="TYPE">SOUND</field>
+              <value name="URL">
+                <shadow type="text" id="M6u_Z9[C{rIxnf+FB?!/">
+                  <field name="TEXT">sounds/footstep_ext.mp3</field>
+                </shadow>
+              </value>
+            </block>
+          </value>
+          <value name="VOLUME">
+            <shadow type="math_number" id="//N/T;pX1(VUv7;_h;=Z">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="volume" id="AO(`r.o_n9R$S@j_/82s">
+              <value name="VALUE">
+                <block type="loadSoundAdv" id="lz4-W/4.=y0|fxt2|t^b">
+                  <field name="TYPE">SOUND</field>
+                  <value name="URL">
+                    <shadow type="text" id="0dE#ag}(m*,)XnSc{aH@">
+                      <field name="TEXT">sounds/footstep_int.mp3</field>
+                    </shadow>
+                  </value>
+                </block>
+              </value>
+              <value name="VOLUME">
+                <shadow type="math_number" id="!;!*Vj%|t!LNg]sL|=if">
+                  <field name="NUM">0</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="variables_set" id="zl:R[siY9,(a^AK,H$n5">
+                  <field name="VAR" id="A-kt8RP#iRS#ViJ:pQXz">footsteps</field>
+                  <value name="VALUE">
+                    <block type="logic_boolean" id="WO@0.RxM*c$PRMzVUu^{">
+                      <field name="BOOL">FALSE</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="variables_set" id="x#V{mq2JMuS?8gl0(~8/" x="110" y="1830">
+      <field name="VAR" id="r2$Lw6}$E2+.JHmi01L^">change</field>
+      <value name="VALUE">
+        <block type="logic_boolean" id="aM-N#-)yx/Rr,.owC,a)">
+          <field name="BOOL">FALSE</field>
+        </block>
+      </value>
+      <next>
+        <block type="variables_set" id="MPc#:f/!(jL[35GfWE#j">
+          <field name="VAR" id="A-kt8RP#iRS#ViJ:pQXz">footsteps</field>
+          <value name="VALUE">
+            <block type="logic_boolean" id="r:.yrk0r8ARL21!CkldS">
+              <field name="BOOL">FALSE</field>
+            </block>
+          </value>
+          <next>
+            <block type="variables_set" id="n+a0$j^1S@u*mT{HORJ*">
+              <field name="VAR" id="_AX2-eLD3MM%Zx0u9|`*">sounds</field>
+              <value name="VALUE">
+                <block type="logic_boolean" id="28WTEdSSJYzI@]Mm]bQ1">
+                  <field name="BOOL">FALSE</field>
+                </block>
+              </value>
+              <next>
+                <block type="volume" id="J_yrzaMbinjfN;[_P$!4">
+                  <value name="VALUE">
+                    <block type="loadSoundAdv" id="gAS46AEUs$P+P,EATim9">
+                      <field name="TYPE">MUSIC</field>
+                      <value name="URL">
+                        <shadow type="text" id="K6iEIQ9z%E]XRYC*0xks">
+                          <field name="TEXT">sounds/env_sound.mp3</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="VOLUME">
+                    <shadow type="math_number" id="];+Y9.M0rqn7Dg2cd4fm">
+                      <field name="NUM">0.4</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="volume" id="4}A/3SV)3uSYS),@`X[j">
+                      <value name="VALUE">
+                        <block type="loadSoundAdv" id="H!8!f?@/sdyF^R]3:knP">
+                          <field name="TYPE">SOUND</field>
+                          <value name="URL">
+                            <shadow type="text" id="ae[yuR_5xlnjUNd]``^@">
+                              <field name="TEXT">sounds/footstep_ext.mp3</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </value>
+                      <value name="VOLUME">
+                        <shadow type="math_number" id="e%]#gyZ,#:n}FD:6g4`X">
+                          <field name="NUM">0.2</field>
+                        </shadow>
+                      </value>
+                      <next>
+                        <block type="volume" id="fh$Ars,hF(K|[P^~e/-/">
+                          <value name="VALUE">
+                            <block type="loadSoundAdv" id="{/j/aOgk{tq3tm6F/hn7">
+                              <field name="TYPE">SOUND</field>
+                              <value name="URL">
+                                <shadow type="text" id="?u2;12zdFfliiRXkruJL">
+                                  <field name="TEXT">sounds/footstep_int.mp3</field>
+                                </shadow>
+                              </value>
+                            </block>
+                          </value>
+                          <value name="VOLUME">
+                            <shadow type="math_number" id="r@V|fg-~Nnd)SM,bD1~N">
+                              <field name="NUM">0.2</field>
+                            </shadow>
+                          </value>
+                          <next>
+                            <block type="eventHTMLElem" id="7ID_kZ:$ihKG8Rr};1M-">
+                              <field name="EVENT">click</field>
+                              <field name="PARENT">FALSE</field>
+                              <value name="ID">
+                                <shadow type="text" id=")jy{FMyOh$U2*7v,#+V)">
+                                  <field name="TEXT"></field>
+                                </shadow>
+                                <block type="DOMObjectSelector" id="XeWQ%pPpDpz/H0aG,WbC">
+                                  <field name="DOM_OBJECT">WINDOW</field>
+                                </block>
+                              </value>
+                              <statement name="DO">
+                                <block type="controls_if" id="RP=;^R[|qx8y;B%Q]wN1">
+                                  <value name="IF0">
+                                    <block type="logic_negate" id="rRF[${y[E}Ip3Ve@%-#F">
+                                      <value name="BOOL">
+                                        <block type="variables_get" id="=n;j6w5:DpxDoPyzZY3O">
+                                          <field name="VAR" id="_AX2-eLD3MM%Zx0u9|`*">sounds</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </value>
+                                  <statement name="DO0">
+                                    <block type="variables_set" id="L8.!R3,Y-lORj/7@jnSH">
+                                      <field name="VAR" id="_AX2-eLD3MM%Zx0u9|`*">sounds</field>
+                                      <value name="VALUE">
+                                        <block type="logic_boolean" id="bk0S`!xHt1=hL2J_v_Rl">
+                                          <field name="BOOL">TRUE</field>
+                                        </block>
+                                      </value>
+                                      <next>
+                                        <block type="playSound" id="r0HDa`0xg{~IstnOp/[G">
+                                          <field name="LOOP">TRUE</field>
+                                          <value name="VALUE">
+                                            <block type="loadSoundAdv" id="8RB8aEt_6CFnemDoX-SJ">
+                                              <field name="TYPE">MUSIC</field>
+                                              <value name="URL">
+                                                <shadow type="text" id="1talw+-DT?LDuNdOhdA.">
+                                                  <field name="TEXT">sounds/env_sound.mp3</field>
+                                                </shadow>
+                                              </value>
+                                            </block>
+                                          </value>
+                                          <next>
+                                            <block type="variables_set" id="k66O0r|WMqz3Qo!v#0tE">
+                                              <field name="VAR" id="Z0r/iL;F/Lro8a_2T!-F">footsteps_sound</field>
+                                              <value name="VALUE">
+                                                <block type="loadSoundAdv" id="jTr}?3s7=%@B/U$1yk[N">
+                                                  <field name="TYPE">SOUND</field>
+                                                  <value name="URL">
+                                                    <shadow type="text" id="=@vNHLCs*AW+-xW?2DBL">
+                                                      <field name="TEXT">sounds/footstep_ext.mp3</field>
+                                                    </shadow>
+                                                  </value>
+                                                </block>
+                                              </value>
+                                              <next>
+                                                <block type="playSound" id="q778OJ6xi90}94jr%0}m">
+                                                  <field name="LOOP">TRUE</field>
+                                                  <value name="VALUE">
+                                                    <block type="loadSoundAdv" id="6:P7))xx}Z3zTo@ZEea.">
+                                                      <field name="TYPE">SOUND</field>
+                                                      <value name="URL">
+                                                        <shadow type="text" id="fXFA?hh@z}wC80f7{@`K">
+                                                          <field name="TEXT">sounds/footstep_ext.mp3</field>
+                                                        </shadow>
+                                                      </value>
+                                                    </block>
+                                                  </value>
+                                                  <next>
+                                                    <block type="playSound" id="x-Ai)-{)mR[B{M)8|Wy6">
+                                                      <field name="LOOP">TRUE</field>
+                                                      <value name="VALUE">
+                                                        <block type="loadSoundAdv" id="^@/}{G=64#;hfUG#dS}Y">
+                                                          <field name="TYPE">SOUND</field>
+                                                          <value name="URL">
+                                                            <shadow type="text" id="?y/eJ,fMqa?HXD_PxdCW">
+                                                              <field name="TEXT">sounds/footstep_int.mp3</field>
+                                                            </shadow>
+                                                          </value>
+                                                        </block>
+                                                      </value>
+                                                    </block>
+                                                  </next>
+                                                </block>
+                                              </next>
+                                            </block>
+                                          </next>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </statement>
+                                </block>
+                              </statement>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1101.6" viewport-y="28" viewport-w="746.4" viewport-h="325" viewport-hidden="true" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>

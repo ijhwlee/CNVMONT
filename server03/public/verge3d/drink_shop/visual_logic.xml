@@ -1,0 +1,851 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="0" scrolly="0" scale="0.9"></tab>
+  <tab name="main" type="CommonTab" active="true" scrollx="307.4800742229668" scrolly="263.07545368437366" scale="0.36894691456899">
+    <variables xmlns="https://developers.google.com/blockly/xml">
+      <variable id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</variable>
+      <variable id="dLX%KwIB~LbneNG#Rk/H">row</variable>
+      <variable id=":jLr`OeA@q74}(VQ[=aG">quantity</variable>
+      <variable id=",g2bI+pLC!cofa+$^ea(">product_width</variable>
+      <variable id="T4D5x%O5J!5cpNnjj-!{">stride</variable>
+      <variable id="6^3+;(XJ^Bva?oGfr1)S">i</variable>
+      <variable id="*h_drfE@(}**f#yV#41}">cloned_can</variable>
+      <variable id=";-8:3rRQ9g0`W1y-2/D2">x_pos</variable>
+      <variable id="xng7_7kL+wd[HK5E-^^U">y_pos</variable>
+      <variable id="x$E[JMA5v8PX6QZ3,{#+">child</variable>
+      <variable id="%:llvymzP-,)FA77*wKo">cloned_cans_current</variable>
+    </variables>
+    <block xmlns="https://developers.google.com/blockly/xml" type="variables_set" id="Aa9VGjO3u)6t9/F[%^9x" x="-410" y="-430">
+      <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+      <value name="VALUE">
+        <block type="lists_create_empty" id="(F.c-C$?HPC!P#n}#U}{"></block>
+      </value>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="controls_if" id="0ld9:+gao,SaCIvE(6:B" x="-410" y="-330">
+      <mutation else="1"></mutation>
+      <value name="IF0">
+        <block type="featureAvailable" id="!X@xd})}BMBzMzU,qz%5">
+          <field name="FEATURE">WOOCOMMERCE</field>
+        </block>
+      </value>
+      <statement name="DO0">
+        <block type="setObjTransform" id="99OhfX#_Kz!V(j.;gZF@">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" usevectorslot="false" useworldspace="false"></mutation>
+          <field name="MODE">position</field>
+          <field name="OFFSET">FALSE</field>
+          <value name="TARGETOBJ">
+            <block type="objectList" id="/Q|lO{Lb~CyzBI3$B/O/">
+              <field name="FIELDNAME">Can</field>
+            </block>
+          </value>
+          <value name="Z">
+            <block type="math_number" id="3omhy:X^V9s_|mqy),}C">
+              <field name="NUM">-1</field>
+            </block>
+          </value>
+          <next>
+            <block type="E-Commerce/wooGetProductInfo" id="Tg}=x2s|)PQGIFRgK|#o">
+              <statement name="WHEN_READY">
+                <block type="console.log" id="=N{LpO+(gYqpRw4mI3vK">
+                  <value name="VALUE">
+                    <shadow type="text" id=";K6l0H2#p+sgv{GmGvnW">
+                      <field name="TEXT">Hello, Verge!</field>
+                    </shadow>
+                    <block type="E-Commerce/wooProductInfo" id="srBz^yOEuSM-ja9U^1PF"></block>
+                  </value>
+                  <next>
+                    <block type="variables_set" id="%sce/GF|6A*([**j7olK">
+                      <field name="VAR" id=":jLr`OeA@q74}(VQ[=aG">quantity</field>
+                      <value name="VALUE">
+                        <block type="dictGet" id="ry^7K5n;toaPZ6j~nHep">
+                          <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                          <value name="DICT">
+                            <block type="E-Commerce/wooProductInfo" id="yyvI6/auAy=e.)@ujz6@"></block>
+                          </value>
+                          <value name="KEY">
+                            <shadow type="text" id="5cE@[Ez-B4vC{w=kbhMv">
+                              <field name="TEXT">quantity</field>
+                            </shadow>
+                          </value>
+                        </block>
+                      </value>
+                      <next>
+                        <block type="removeObject" id="M]^zpS5dBjSM[x=iWVF.">
+                          <value name="VALUE">
+                            <block type="variables_get" id="dwJ*xhENNLxW5oW8BvH-">
+                              <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                            </block>
+                          </value>
+                          <next>
+                            <block type="variables_set" id="]]-Pr3Z}L8.)6s2U834z">
+                              <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                              <value name="VALUE">
+                                <block type="lists_create_empty" id="6ii{ClY}YHTaUR#O%pE="></block>
+                              </value>
+                              <next>
+                                <block type="controls_if" id="-FkOW=SW(0$1w:1$p]jR">
+                                  <mutation elseif="1" else="1"></mutation>
+                                  <value name="IF0">
+                                    <block type="logic_compare" id="JgmV+}!*;vUlx|{_{Yo}">
+                                      <field name="OP">EQ</field>
+                                      <value name="A">
+                                        <block type="dictGet" id="(mL@!}qD=Q;Ycl7E~qG%">
+                                          <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                          <value name="DICT">
+                                            <block type="E-Commerce/wooProductInfo" id="txWMRTc`N6P7EmGikodd"></block>
+                                          </value>
+                                          <value name="KEY">
+                                            <shadow type="text" id="S`G6s.]`kBs.AOKFo}o#">
+                                              <field name="TEXT">type</field>
+                                            </shadow>
+                                            <block type="text" id="DJ#?b!Z*6%)^+ab!9A~Y">
+                                              <field name="TEXT">type</field>
+                                            </block>
+                                          </value>
+                                        </block>
+                                      </value>
+                                      <value name="B">
+                                        <block type="text" id="RAT`L-7}}uVI:0LXmfu6">
+                                          <field name="TEXT">simple</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </value>
+                                  <statement name="DO0">
+                                    <block type="procedures_callnoreturn" id="wVFPpkg+*HZcFzB1vD2{">
+                                      <mutation name="clone_position_cans">
+                                        <arg name="row"></arg>
+                                        <arg name="quantity"></arg>
+                                        <arg name="product_width"></arg>
+                                        <arg name="cloned_cans"></arg>
+                                      </mutation>
+                                      <value name="ARG0">
+                                        <block type="math_number" id="FuvIw05OxBkJ0e]Uf_ss">
+                                          <field name="NUM">0</field>
+                                        </block>
+                                      </value>
+                                      <value name="ARG1">
+                                        <block type="variables_get" id="TY#S9K3Wnj!6N3;1rw3n">
+                                          <field name="VAR" id=":jLr`OeA@q74}(VQ[=aG">quantity</field>
+                                        </block>
+                                      </value>
+                                      <value name="ARG2">
+                                        <block type="dictGet" id="A/G(ve-9=h/xa%[%%sd)">
+                                          <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                          <value name="DICT">
+                                            <block type="E-Commerce/wooProductInfo" id="=oMo6!I$n}E6AHn-sO?o"></block>
+                                          </value>
+                                          <value name="KEY">
+                                            <shadow type="text" id="$2g%5(b|t^Z_D+_R/ydH">
+                                              <field name="TEXT">width</field>
+                                            </shadow>
+                                          </value>
+                                        </block>
+                                      </value>
+                                      <value name="ARG3">
+                                        <block type="variables_get" id="%I(](@1=3Ig]r]e!*Mb/">
+                                          <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                                        </block>
+                                      </value>
+                                      <next>
+                                        <block type="assignMaterial" id="LS#;%$RY_ixa}@,%3RK#">
+                                          <mutation xmlns="http://www.w3.org/1999/xhtml" usematerialindex="false"></mutation>
+                                          <value name="VALUE2">
+                                            <block type="dictGet" id="=ke3+T*5?z:zUBvX6MZW">
+                                              <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                              <value name="DICT">
+                                                <block type="E-Commerce/wooProductInfo" id="q7Ru{sUUfYzNg2dypH9r"></block>
+                                              </value>
+                                              <value name="KEY">
+                                                <shadow type="text" id="S`G6s.]`kBs.AOKFo}o#">
+                                                  <field name="TEXT">type</field>
+                                                </shadow>
+                                                <block type="text" id="V`.Q%ljwU8H}n)e*wnZT">
+                                                  <field name="TEXT">sku</field>
+                                                </block>
+                                              </value>
+                                            </block>
+                                          </value>
+                                          <value name="VALUE1">
+                                            <block type="variables_get" id="|}_h{.9f1SFb3tHqiXF;">
+                                              <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                                            </block>
+                                          </value>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </statement>
+                                  <value name="IF1">
+                                    <block type="logic_compare" id="!.(cEECJ-.K)c8aeiu,.">
+                                      <field name="OP">EQ</field>
+                                      <value name="A">
+                                        <block type="dictGet" id="Lue*gI]Z)i;%{XzPe6{!">
+                                          <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                          <value name="DICT">
+                                            <block type="E-Commerce/wooProductInfo" id=":P}A2j8$*D.kj|+E1Z!6"></block>
+                                          </value>
+                                          <value name="KEY">
+                                            <shadow type="text" id="S`G6s.]`kBs.AOKFo}o#">
+                                              <field name="TEXT">type</field>
+                                            </shadow>
+                                            <block type="text" id="1S)d4c[|B~NJ+YP80{Ms">
+                                              <field name="TEXT">type</field>
+                                            </block>
+                                          </value>
+                                        </block>
+                                      </value>
+                                      <value name="B">
+                                        <block type="text" id="KF/{;yx_*#!AjM7c3+3R">
+                                          <field name="TEXT">variable</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </value>
+                                  <statement name="DO1">
+                                    <block type="procedures_callnoreturn" id="6I,KvPU*^?)!/MT83D2o">
+                                      <mutation name="clone_position_cans">
+                                        <arg name="row"></arg>
+                                        <arg name="quantity"></arg>
+                                        <arg name="product_width"></arg>
+                                        <arg name="cloned_cans"></arg>
+                                      </mutation>
+                                      <value name="ARG0">
+                                        <block type="math_number" id="Pjn.$BRy6xb0?S$y73P*">
+                                          <field name="NUM">0</field>
+                                        </block>
+                                      </value>
+                                      <value name="ARG1">
+                                        <block type="variables_get" id="*/d#,bNIncs=8M?EC(RW">
+                                          <field name="VAR" id=":jLr`OeA@q74}(VQ[=aG">quantity</field>
+                                        </block>
+                                      </value>
+                                      <value name="ARG2">
+                                        <block type="dictGet" id="JXf/@s:E@$#?|T,Cgm6j">
+                                          <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                          <value name="DICT">
+                                            <block type="E-Commerce/wooProductInfo" id=":M`gpY/m4N8d(%YP%ydh"></block>
+                                          </value>
+                                          <value name="KEY">
+                                            <shadow type="text" id="eMvC@,TM+i2))Q~beFD+">
+                                              <field name="TEXT">width</field>
+                                            </shadow>
+                                          </value>
+                                        </block>
+                                      </value>
+                                      <value name="ARG3">
+                                        <block type="variables_get" id="mi`}_;eC~QfjZ=ye3$`W">
+                                          <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                                        </block>
+                                      </value>
+                                      <next>
+                                        <block type="assignMaterial" id="F4mKQG0/1~OBi9a@$_Vu">
+                                          <mutation xmlns="http://www.w3.org/1999/xhtml" usematerialindex="false"></mutation>
+                                          <value name="VALUE2">
+                                            <block type="E-Commerce/wooProductAttribute" id="xh7gKb$Dgz@KID-*GA3t">
+                                              <value name="NAME">
+                                                <shadow type="text" id="}R8)r$C,+(X}~z3DCLlG">
+                                                  <field name="TEXT">Kind</field>
+                                                </shadow>
+                                              </value>
+                                            </block>
+                                          </value>
+                                          <value name="VALUE1">
+                                            <block type="variables_get" id="pG5ppaAog4^Mqn3~Z@=8">
+                                              <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                                            </block>
+                                          </value>
+                                          <next>
+                                            <block type="controls_if" id="7y6~m3)6nXyCwRKTK)f8">
+                                              <mutation elseif="1"></mutation>
+                                              <value name="IF0">
+                                                <block type="logic_compare" id="Eza-=5Zvuz=xXU+X-D4N">
+                                                  <field name="OP">EQ</field>
+                                                  <value name="A">
+                                                    <block type="E-Commerce/wooProductAttribute" id="oS|lXGBtHNY}e,N/ZC)t">
+                                                      <value name="NAME">
+                                                        <shadow type="text" id="AIxUz?,L9Ru1W`)X+39}">
+                                                          <field name="TEXT">Size</field>
+                                                        </shadow>
+                                                      </value>
+                                                    </block>
+                                                  </value>
+                                                  <value name="B">
+                                                    <block type="text" id="jP],4,YcK]tY}3V-HYkE">
+                                                      <field name="TEXT">Small</field>
+                                                    </block>
+                                                  </value>
+                                                </block>
+                                              </value>
+                                              <statement name="DO0">
+                                                <block type="setObjTransform" id="=W[L}a1!PK#Q;Bj]DkPc">
+                                                  <mutation xmlns="http://www.w3.org/1999/xhtml" usevectorslot="false" useworldspace="false"></mutation>
+                                                  <field name="MODE">scale</field>
+                                                  <field name="OFFSET">FALSE</field>
+                                                  <value name="TARGETOBJ">
+                                                    <block type="variables_get" id=")sYO5X]UsjE5XNAb!uRy">
+                                                      <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="X">
+                                                    <block type="math_number" id="2p(u4D[]kmXeVXE3tt,X">
+                                                      <field name="NUM">0.8</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="Y">
+                                                    <block type="math_number" id="O.n^)[Ji,an{xp]Z}!UF">
+                                                      <field name="NUM">0.8</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="Z">
+                                                    <block type="math_number" id="vQ[ImTj0gV++~UC8;Jxd">
+                                                      <field name="NUM">0.8</field>
+                                                    </block>
+                                                  </value>
+                                                </block>
+                                              </statement>
+                                              <value name="IF1">
+                                                <block type="logic_compare" id="iLolUYn5:=/@UhKp0(B]">
+                                                  <field name="OP">EQ</field>
+                                                  <value name="A">
+                                                    <block type="E-Commerce/wooProductAttribute" id="?UifHm_@p+GgG}el0{u.">
+                                                      <value name="NAME">
+                                                        <shadow type="text" id="EBZvJqlM889t#,;A-~K[">
+                                                          <field name="TEXT">Size</field>
+                                                        </shadow>
+                                                      </value>
+                                                    </block>
+                                                  </value>
+                                                  <value name="B">
+                                                    <block type="text" id="bs0Emh|@pQmc#zldHt3q">
+                                                      <field name="TEXT">Large</field>
+                                                    </block>
+                                                  </value>
+                                                </block>
+                                              </value>
+                                              <statement name="DO1">
+                                                <block type="setObjTransform" id="00rC5|a9k}{+oI5i|#D8">
+                                                  <mutation xmlns="http://www.w3.org/1999/xhtml" usevectorslot="false" useworldspace="false"></mutation>
+                                                  <field name="MODE">scale</field>
+                                                  <field name="OFFSET">FALSE</field>
+                                                  <value name="TARGETOBJ">
+                                                    <block type="variables_get" id=":z+`6|!!R@I8|;C1=eAX">
+                                                      <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="X">
+                                                    <block type="math_number" id="m`Iy(8+[Ey)%*D0jjaRj">
+                                                      <field name="NUM">1.2</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="Y">
+                                                    <block type="math_number" id="jm3BDMCF:.TN/=:`X0[7">
+                                                      <field name="NUM">1.2</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="Z">
+                                                    <block type="math_number" id="]9U*~I~4*`cb)6M)@IUy">
+                                                      <field name="NUM">1.2</field>
+                                                    </block>
+                                                  </value>
+                                                </block>
+                                              </statement>
+                                            </block>
+                                          </next>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </statement>
+                                  <statement name="ELSE">
+                                    <block type="variables_set" id="t~.!ycimG}0?nlHejW4`">
+                                      <field name="VAR" id="dLX%KwIB~LbneNG#Rk/H">row</field>
+                                      <value name="VALUE">
+                                        <block type="math_number" id="+(L(L|T!yfmAlXpeH$}6">
+                                          <field name="NUM">-1</field>
+                                        </block>
+                                      </value>
+                                      <next>
+                                        <block type="controls_forEach" id="TiG/`4{8Ja#`~1/D5lIr">
+                                          <field name="VAR" id="x$E[JMA5v8PX6QZ3,{#+">child</field>
+                                          <value name="LIST">
+                                            <block type="dictGet" id=".w/{}C-^u(G9iF7T+1DM">
+                                              <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                              <value name="DICT">
+                                                <block type="E-Commerce/wooProductInfo" id="n5[iG5UGU8VP%F.aVLW-"></block>
+                                              </value>
+                                              <value name="KEY">
+                                                <shadow type="text" id="S`G6s.]`kBs.AOKFo}o#">
+                                                  <field name="TEXT">type</field>
+                                                </shadow>
+                                                <block type="text" id="(p9H]W8A`mO.AQr7Yo{X">
+                                                  <field name="TEXT">children</field>
+                                                </block>
+                                              </value>
+                                            </block>
+                                          </value>
+                                          <statement name="DO">
+                                            <block type="variables_set" id="*YBkL+];i^aHa2h%h[?v">
+                                              <field name="VAR" id="%:llvymzP-,)FA77*wKo">cloned_cans_current</field>
+                                              <value name="VALUE">
+                                                <block type="lists_create_empty" id="@%KTD+@%x;5vY)IWmbs#"></block>
+                                              </value>
+                                              <next>
+                                                <block type="procedures_callnoreturn" id="0Xug]N8|yVVG__$EUllM">
+                                                  <mutation name="clone_position_cans">
+                                                    <arg name="row"></arg>
+                                                    <arg name="quantity"></arg>
+                                                    <arg name="product_width"></arg>
+                                                    <arg name="cloned_cans"></arg>
+                                                  </mutation>
+                                                  <value name="ARG0">
+                                                    <block type="variables_get" id="e,0rw!9L4YBFRQlmP72I">
+                                                      <field name="VAR" id="dLX%KwIB~LbneNG#Rk/H">row</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="ARG1">
+                                                    <block type="dictGet" id="^W[k-/w3rRmCw}regR:Y">
+                                                      <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                                      <value name="DICT">
+                                                        <block type="variables_get" id="9fiws^o/P)m(w4ylgW}Z">
+                                                          <field name="VAR" id="x$E[JMA5v8PX6QZ3,{#+">child</field>
+                                                        </block>
+                                                      </value>
+                                                      <value name="KEY">
+                                                        <shadow type="text" id="(x;OlV-PWq!L5`q1dgXO">
+                                                          <field name="TEXT">quantity</field>
+                                                        </shadow>
+                                                      </value>
+                                                    </block>
+                                                  </value>
+                                                  <value name="ARG2">
+                                                    <block type="dictGet" id="5R*%P`_[DzLooZs{#ICE">
+                                                      <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                                      <value name="DICT">
+                                                        <block type="variables_get" id="u^!ey,sv)7VCcG56I]ye">
+                                                          <field name="VAR" id="x$E[JMA5v8PX6QZ3,{#+">child</field>
+                                                        </block>
+                                                      </value>
+                                                      <value name="KEY">
+                                                        <shadow type="text" id="_~b6H~nct|%ow4B0ilLZ">
+                                                          <field name="TEXT">width</field>
+                                                        </shadow>
+                                                      </value>
+                                                    </block>
+                                                  </value>
+                                                  <value name="ARG3">
+                                                    <block type="variables_get" id="jGjbsNUz4IFeO6@DGrKn">
+                                                      <field name="VAR" id="%:llvymzP-,)FA77*wKo">cloned_cans_current</field>
+                                                    </block>
+                                                  </value>
+                                                  <next>
+                                                    <block type="assignMaterial" id="-3)?)9CqvlE]xjd1H?.z">
+                                                      <mutation xmlns="http://www.w3.org/1999/xhtml" usematerialindex="false"></mutation>
+                                                      <value name="VALUE2">
+                                                        <block type="dictGet" id="`?l3N#jGLr*QlxH1aWQs">
+                                                          <mutation xmlns="http://www.w3.org/1999/xhtml" defaultvalueslot="false"></mutation>
+                                                          <value name="DICT">
+                                                            <block type="variables_get" id="~m3Nm=XiYv1bn3v:3@??">
+                                                              <field name="VAR" id="x$E[JMA5v8PX6QZ3,{#+">child</field>
+                                                            </block>
+                                                          </value>
+                                                          <value name="KEY">
+                                                            <shadow type="text" id="S`G6s.]`kBs.AOKFo}o#">
+                                                              <field name="TEXT">type</field>
+                                                            </shadow>
+                                                            <block type="text" id="s:7E1ilI9TQpKOQsdMDy">
+                                                              <field name="TEXT">sku</field>
+                                                            </block>
+                                                          </value>
+                                                        </block>
+                                                      </value>
+                                                      <value name="VALUE1">
+                                                        <block type="variables_get" id="_J)rP/}Z_0fXua}FccKH">
+                                                          <field name="VAR" id="%:llvymzP-,)FA77*wKo">cloned_cans_current</field>
+                                                        </block>
+                                                      </value>
+                                                      <next>
+                                                        <block type="lists_setIndex" id="[%K_KR^[RVE-/)#}*AQ@">
+                                                          <mutation at="false"></mutation>
+                                                          <field name="MODE">INSERT</field>
+                                                          <field name="WHERE">LAST</field>
+                                                          <value name="LIST">
+                                                            <block type="variables_get" id="*SP,}IPZ*@^B^?jMI;5s">
+                                                              <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                                                            </block>
+                                                          </value>
+                                                          <value name="TO">
+                                                            <block type="variables_get" id="#6UYn?TQ1?iqus9b6OQF">
+                                                              <field name="VAR" id="%:llvymzP-,)FA77*wKo">cloned_cans_current</field>
+                                                            </block>
+                                                          </value>
+                                                          <next>
+                                                            <block type="math_change" id="W/SZ2/c!c$PJ1[Ne_HAa">
+                                                              <field name="VAR" id="dLX%KwIB~LbneNG#Rk/H">row</field>
+                                                              <value name="DELTA">
+                                                                <shadow type="math_number" id="jy}vVrhNNcJPA#f9cM;;">
+                                                                  <field name="NUM">1</field>
+                                                                </shadow>
+                                                              </value>
+                                                            </block>
+                                                          </next>
+                                                        </block>
+                                                      </next>
+                                                    </block>
+                                                  </next>
+                                                </block>
+                                              </next>
+                                            </block>
+                                          </statement>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </statement>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </statement>
+            </block>
+          </next>
+        </block>
+      </statement>
+      <statement name="ELSE">
+        <block type="addHTMLElement" id="H/qF|K0Bp|r!iwA0J2U%">
+          <field name="ELEMENT">div</field>
+          <field name="MODE">TO</field>
+          <field name="PARENT">FALSE</field>
+          <value name="ID">
+            <shadow type="text" id="tK-Rj94mw]`b[c2L2([C">
+              <field name="TEXT">alert</field>
+            </shadow>
+          </value>
+          <value name="TARGET_ID">
+            <shadow type="DOMObjectSelector" id="8wNIonlk;?AESDa^a;KN">
+              <field name="DOM_OBJECT">CONTAINER</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="setHTMLElemAttribute" id="Q/V++$E5JZ|e[-=oBHVH">
+              <field name="ATTRIBUTE">innerHTML</field>
+              <field name="PARENT">FALSE</field>
+              <value name="VALUE">
+                <block type="textMultiline" id="97@~^J4BAw`TU;1H^nk8">
+                  <field name="HIGHLIGHT_MODE">html</field>
+                  <field name="TEXT" editor-height="3" editor-width="735">WooCommerce not found! Please setup a new product to make this app work.&amp;#10;Alternatively, you can play with sandbox store &lt;a href="https://sandbox.soft8soft.com/shop/" target="_blank" id="alertLink"&gt;here&lt;/a&gt;.&amp;#10;                  </field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text" id="O.P{dg:5y76}KlV4yFmA">
+                  <field name="TEXT">alert</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="setHTMLElemAttribute" id="x/C?tA2Khqx6{F#!*Q?O">
+                  <field name="ATTRIBUTE">style</field>
+                  <field name="PARENT">FALSE</field>
+                  <value name="VALUE">
+                    <block type="textMultiline" id="Q5j]G31SSz7wN+62;{J#">
+                      <field name="HIGHLIGHT_MODE">css</field>
+                      <field name="TEXT" editor-height="12" editor-width="735">position: absolute;&amp;#10;padding: 20px;&amp;#10;background-color: #f44336;&amp;#10;color: white;&amp;#10;opacity: 1;&amp;#10;transition: opacity 0.6s;&amp;#10;left: 0px;&amp;#10;right: 0px;&amp;#10;bottom: 0px;&amp;#10;font-family: sans-serif;&amp;#10;text-align: center;&amp;#10;                      </field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text" id="Cmw%]o3$[plv8|ciDLEx">
+                      <field name="TEXT">alert</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="setHTMLElemAttribute" id="#$-`U4:~!)gp7r?T=g(=">
+                      <field name="ATTRIBUTE">style</field>
+                      <field name="PARENT">FALSE</field>
+                      <value name="VALUE">
+                        <block type="textMultiline" id="VaPJZu#%40cx|:N%03qG">
+                          <field name="HIGHLIGHT_MODE">css</field>
+                          <field name="TEXT" editor-height="3" editor-width="735">color: white</field>
+                        </block>
+                      </value>
+                      <value name="ID">
+                        <shadow type="text" id=".aL]:xkK0Y`F83x^i`d:">
+                          <field name="TEXT">alertLink</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="YmHgm/!ZUVo$?`E^h$yZ" x="650" y="-310">
+      <mutation>
+        <arg name="row" varid="dLX%KwIB~LbneNG#Rk/H"></arg>
+        <arg name="quantity" varid=":jLr`OeA@q74}(VQ[=aG"></arg>
+        <arg name="product_width" varid=",g2bI+pLC!cofa+$^ea("></arg>
+        <arg name="cloned_cans" varid=":w%P*b{_cuO?OmGuZ)%i"></arg>
+      </mutation>
+      <field name="NAME">clone_position_cans</field>
+      <comment pinned="false" h="80" w="160">Describe this function...</comment>
+      <statement name="STACK">
+        <block type="procedures_ifreturn" id="||_r9%6)_3)BVZ({^|j}">
+          <mutation value="0"></mutation>
+          <value name="CONDITION">
+            <block type="logic_negate" id="ryN9yja.R}{0Zn}pqGL0">
+              <value name="BOOL">
+                <block type="variables_get" id="VVAHenq`PdlAfd.}78A7">
+                  <field name="VAR" id=":jLr`OeA@q74}(VQ[=aG">quantity</field>
+                </block>
+              </value>
+            </block>
+          </value>
+          <next>
+            <block type="variables_set" id="2M;2.`;H0mX.kN@rwa3[">
+              <field name="VAR" id="T4D5x%O5J!5cpNnjj-!{">stride</field>
+              <value name="VALUE">
+                <block type="math_arithmetic" id="Q%Tz}KZ4,gQzqx.QXcTt">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number" id="u~gr9-1z59`b_+ANr_,N">
+                      <field name="NUM">2</field>
+                    </shadow>
+                    <block type="math_arithmetic" id="_;.#v,_CgrGnsC*D4V}=">
+                      <field name="OP">DIVIDE</field>
+                      <value name="A">
+                        <shadow type="math_number" id="_U9a_dWzaSSk`+IM]Ep(">
+                          <field name="NUM">2</field>
+                        </shadow>
+                        <block type="variables_get" id="j#:$k(qfQ,]#qC?7VT)=">
+                          <field name="VAR" id=",g2bI+pLC!cofa+$^ea(">product_width</field>
+                        </block>
+                      </value>
+                      <value name="B">
+                        <shadow type="math_number" id="bY{@!MX%30Pi(8NW)!CP">
+                          <field name="NUM">100</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number" id="jYfyb17,vQEDv]HQiY41">
+                      <field name="NUM">0.02</field>
+                    </shadow>
+                  </value>
+                </block>
+              </value>
+              <next>
+                <block type="controls_for" id="z)z|Z}~MK_RTqW$B[CZe">
+                  <field name="VAR" id="6^3+;(XJ^Bva?oGfr1)S">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number" id="ddocw|U]BUyiWJ7GH56,">
+                      <field name="NUM">0</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number" id="UZfr!~A`}{=e|$~g$d@I">
+                      <field name="NUM">8</field>
+                    </shadow>
+                    <block type="math_arithmetic" id="Zy=th@7Z2krh)~SD`WnJ">
+                      <field name="OP">MINUS</field>
+                      <value name="A">
+                        <shadow type="math_number" id="(2WdE8,KOPXVJM+%Z,IX">
+                          <field name="NUM">2</field>
+                        </shadow>
+                        <block type="variables_get" id="k(w3Q}v@:E^e-E+PhsbV">
+                          <field name="VAR" id=":jLr`OeA@q74}(VQ[=aG">quantity</field>
+                        </block>
+                      </value>
+                      <value name="B">
+                        <shadow type="math_number" id="}01/#=UhyPC6^TRx{F2n">
+                          <field name="NUM">1</field>
+                        </shadow>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number" id="h69CY3fxY0lTrEB:XiAm">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <statement name="DO">
+                    <block type="variables_set" id="W*!}9LVG1L.7]3Q1.Vpw">
+                      <field name="VAR" id="*h_drfE@(}**f#yV#41}">cloned_can</field>
+                      <value name="VALUE">
+                        <block type="cloneObject" id="w_o%0?C|2y+/rPV3+a+2">
+                          <mutation xmlns="http://www.w3.org/1999/xhtml" clonematerials="false" preservegroups="false"></mutation>
+                          <value name="OBJECTINPUT">
+                            <block type="objectList" id="Pjz7*5yHdtym.2#C9$S]">
+                              <field name="FIELDNAME">Can</field>
+                            </block>
+                          </value>
+                        </block>
+                      </value>
+                      <next>
+                        <block type="variables_set" id="+zKYZO/*C/EumR#K4-J$">
+                          <field name="VAR" id=";-8:3rRQ9g0`W1y-2/D2">x_pos</field>
+                          <value name="VALUE">
+                            <block type="math_arithmetic" id="M=#Wu/rwE`,-a=4G,XSF">
+                              <field name="OP">ADD</field>
+                              <value name="A">
+                                <shadow type="math_number" id="98sX.OoX?iO#A#Zoz/Nk">
+                                  <field name="NUM">2</field>
+                                </shadow>
+                                <block type="math_arithmetic" id="I:~V}?xG3-UWNdWv$V~O">
+                                  <field name="OP">MULTIPLY</field>
+                                  <value name="A">
+                                    <shadow type="math_number" id="Y!6?c,T!lHH6tyOYKfy@">
+                                      <field name="NUM">2</field>
+                                    </shadow>
+                                    <block type="math_arithmetic" id="ZXfG:_-uVGg5!}M,R(E:">
+                                      <field name="OP">MINUS</field>
+                                      <value name="A">
+                                        <shadow type="math_number" id="(2WdE8,KOPXVJM+%Z,IX">
+                                          <field name="NUM">2</field>
+                                        </shadow>
+                                        <block type="variables_get" id="$Y8_Ik(nXRX13ZnBU5YH">
+                                          <field name="VAR" id=":jLr`OeA@q74}(VQ[=aG">quantity</field>
+                                        </block>
+                                      </value>
+                                      <value name="B">
+                                        <shadow type="math_number" id="j$lfrsaoa5|%)289uT%N">
+                                          <field name="NUM">1</field>
+                                        </shadow>
+                                      </value>
+                                    </block>
+                                  </value>
+                                  <value name="B">
+                                    <shadow type="math_number" id="U-4i+(G3N(YA@IrhXZ!|">
+                                      <field name="NUM">-0.25</field>
+                                    </shadow>
+                                    <block type="math_arithmetic" id="XC]%pDp=W0iW~#ufiC2#">
+                                      <field name="OP">MULTIPLY</field>
+                                      <value name="A">
+                                        <shadow type="math_number" id="2?VBTbY[?YSG*e#nLg0l">
+                                          <field name="NUM">-0.5</field>
+                                        </shadow>
+                                      </value>
+                                      <value name="B">
+                                        <shadow type="math_number" id="HXzWYOj,`7#*9^mMNb~1">
+                                          <field name="NUM">2</field>
+                                        </shadow>
+                                        <block type="variables_get" id="(RiEt@:{L]l0L-+ulM`*">
+                                          <field name="VAR" id="T4D5x%O5J!5cpNnjj-!{">stride</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </value>
+                                </block>
+                              </value>
+                              <value name="B">
+                                <shadow type="math_number" id="ZcTgmugv)#~(2U9qn3.I">
+                                  <field name="NUM">2</field>
+                                </shadow>
+                                <block type="math_arithmetic" id="Un.G]{?VE|GjIt2@W?7R">
+                                  <field name="OP">MULTIPLY</field>
+                                  <value name="A">
+                                    <shadow type="math_number" id="j;9zHWz5YvB8FLX^#L+N">
+                                      <field name="NUM">2</field>
+                                    </shadow>
+                                    <block type="variables_get" id="ee.Ff}f,~#!Ba67vZw+6">
+                                      <field name="VAR" id="6^3+;(XJ^Bva?oGfr1)S">i</field>
+                                    </block>
+                                  </value>
+                                  <value name="B">
+                                    <shadow type="math_number" id="SB/OwX$hN`-DvS$bvoZy">
+                                      <field name="NUM">0.5</field>
+                                    </shadow>
+                                    <block type="variables_get" id="rB+FslI8t_uI)8sAK+aG">
+                                      <field name="VAR" id="T4D5x%O5J!5cpNnjj-!{">stride</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                          <next>
+                            <block type="variables_set" id="z1Zw3Ujw*$=xD2~Atn5)">
+                              <field name="VAR" id="xng7_7kL+wd[HK5E-^^U">y_pos</field>
+                              <value name="VALUE">
+                                <block type="math_arithmetic" id="ZiEVvuX`u1um7nwiJX:k">
+                                  <field name="OP">MULTIPLY</field>
+                                  <value name="A">
+                                    <shadow type="math_number" id="1)cBT_clJFZQtnLtZSk%">
+                                      <field name="NUM">2</field>
+                                    </shadow>
+                                    <block type="variables_get" id="P8CsCDE`fUhQMy{f($dO">
+                                      <field name="VAR" id="dLX%KwIB~LbneNG#Rk/H">row</field>
+                                    </block>
+                                  </value>
+                                  <value name="B">
+                                    <shadow type="math_number" id="y:M^5g[}[B!2hZL$M;Bw">
+                                      <field name="NUM">2</field>
+                                    </shadow>
+                                    <block type="variables_get" id="0H7h$a+vh9qW.e_)jUE3">
+                                      <field name="VAR" id="T4D5x%O5J!5cpNnjj-!{">stride</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </value>
+                              <next>
+                                <block type="setObjTransform" id="M-F5(lJC`.NQ3Yq^ySst">
+                                  <mutation xmlns="http://www.w3.org/1999/xhtml" usevectorslot="false" useworldspace="false"></mutation>
+                                  <field name="MODE">position</field>
+                                  <field name="OFFSET">FALSE</field>
+                                  <value name="TARGETOBJ">
+                                    <block type="variables_get" id="tAk^Uh1szRP;.jSx8cO|">
+                                      <field name="VAR" id="*h_drfE@(}**f#yV#41}">cloned_can</field>
+                                    </block>
+                                  </value>
+                                  <value name="X">
+                                    <block type="variables_get" id="2d,zIig/A(|F-Y)Iy#YA">
+                                      <field name="VAR" id=";-8:3rRQ9g0`W1y-2/D2">x_pos</field>
+                                    </block>
+                                  </value>
+                                  <value name="Y">
+                                    <block type="variables_get" id="2!b5[ez3`E5~9pVafu-y">
+                                      <field name="VAR" id="xng7_7kL+wd[HK5E-^^U">y_pos</field>
+                                    </block>
+                                  </value>
+                                  <value name="Z">
+                                    <block type="math_number" id="]`tg(Ta`1)Rr0+AxOErU">
+                                      <field name="NUM">0</field>
+                                    </block>
+                                  </value>
+                                  <next>
+                                    <block type="lists_setIndex" id="41Ym3#*~[?/bZ@f,^aSo">
+                                      <mutation at="false"></mutation>
+                                      <field name="MODE">INSERT</field>
+                                      <field name="WHERE">LAST</field>
+                                      <value name="LIST">
+                                        <block type="variables_get" id="Ck5~l0$71Uw5Q]u-HtNu">
+                                          <field name="VAR" id=":w%P*b{_cuO?OmGuZ)%i">cloned_cans</field>
+                                        </block>
+                                      </value>
+                                      <value name="TO">
+                                        <block type="variables_get" id="L*YsB|yI/I]{#grzSw$a">
+                                          <field name="VAR" id="*h_drfE@(}**f#yV#41}">cloned_can</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </statement>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1050.5" viewport-y="45" viewport-w="614" viewport-h="384.5" viewport-hidden="false" toolbox-library-mode="false" toolbox-minimized-mode="false"></editorsettings>
+</xml>
