@@ -19,7 +19,7 @@ app.use("/", require("./routes/home"));
 app.use("/3dmodels", require("./routes/models"));
 app.use("/skinning", require("./routes/skinning"));
 app.use("/editing", require("./routes/editing"));
-app.use("/vega3d", require("./routes/vega3d"));
+app.use("/verge3d", require("./routes/verge3d"));
 
 https.createServer(options, app).listen(PORT, () => {
   console.log(`Server running at https://localhost:${PORT}`);

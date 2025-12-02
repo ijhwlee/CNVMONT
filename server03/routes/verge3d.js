@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const showVega3d = require("../controllers/vega3dControllers");
+const showVerge3d = require("../controllers/verge3dControllers");
 
 router
     .route("/")
     .get((req, res) => {
-        res.status(200).send("Hello Vega 3d examples");
+        res.status(200).send("Hello Verge 3d examples");
     })
 
 router
     .route("/:id")
-    .get(showVega3d)
+    .get(showVerge3d)
 
 module.exports = router;

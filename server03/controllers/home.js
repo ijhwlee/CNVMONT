@@ -35,8 +35,8 @@ const showHome =  (req, res) => {
     })
 };
 
-const showVega3d =  (req, res) => {
-    const modelPath = path.join(__dirname, '../public/vega3d');
+const showVerge3d =  (req, res) => {
+    const modelPath = path.join(__dirname, '../public/verge3d');
     fs.readdir(modelPath, (err, files) => {
         console.log(`files = ${files}`);
         if(err) {
@@ -47,9 +47,9 @@ const showVega3d =  (req, res) => {
             let links = [];
             files.forEach((file, index, files) => { // assuming list of directories
                 const name = file;
-                links[index] = '/vega3d/'+name;
+                links[index] = '/verge3d/'+name;
             })
-            res.render("vega3d", {vega3dList: links, folderList: files});
+            res.render("verge3d", {verge3dList: links, folderList: files});
         }
     })
 };
@@ -107,4 +107,4 @@ const showThree =  (req, res) => {
     })
 };
 
-module.exports = {showHome, showThree, showSkinning, showEditing, showVega3d};
+module.exports = {showHome, showThree, showSkinning, showEditing, showVerge3d};
