@@ -107,4 +107,11 @@ const showThree =  (req, res) => {
     })
 };
 
-module.exports = {showHome, showThree, showSkinning, showEditing, showVerge3d};
+const showLogin =  (req, res) => {
+    if (req.isAuthenticated()) {
+        return res.redirect('/subscribed');
+    }
+    res.render("login", {error : null});
+};
+
+module.exports = {showHome, showThree, showSkinning, showEditing, showVerge3d, showLogin};
